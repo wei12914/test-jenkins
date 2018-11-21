@@ -1,0 +1,17 @@
+SELECT 
+    Sn 			  	AS sn,
+    CityName        AS cityName , 
+    FacNo           AS facNo, 
+    FacName         AS facName, 
+    FacAddr         AS facAddr, 
+    AplName         AS aplName,
+    AplStatus 		AS aplStatus,
+    PublicDate      AS publicDate, 
+    AuditDate       AS auditDate, 
+    IsQuestion      AS isQuestion, 
+    IsMeeting 		AS isMeeting,
+    IsAsk			AS isAsk
+FROM 
+    View_Re_Commissioning
+WHERE 
+    1 = 1

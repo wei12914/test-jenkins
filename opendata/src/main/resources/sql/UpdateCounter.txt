@@ -1,0 +1,11 @@
+UPDATE
+    [COUNT]
+SET
+    mount =
+    (
+        SELECT
+            mount + :count
+        FROM
+            COUNT
+        WHERE
+            type ='browse' )

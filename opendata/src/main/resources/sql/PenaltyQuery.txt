@@ -1,0 +1,19 @@
+SELECT
+    a.FacNo           AS facNo,
+    a.FacName         AS facName,
+    b.CityName        AS cityName,
+    a.FacAddr         AS facAddr,
+    a.DocumentNo      AS documentNo,
+    a.PenaltyDate     AS penaltyDate,
+    a.TransgressDate  AS transgressDate,
+    a.TransgressLaw   AS transgressLaw,
+    a.PenaltyMoney    AS penaltyMoney,
+    a.TransgressState AS transgressState
+FROM
+    pen_penalty a
+LEFT JOIN
+    com_city b
+ON
+    a.CityCode = b.CityCode
+WHERE
+    1 = 1

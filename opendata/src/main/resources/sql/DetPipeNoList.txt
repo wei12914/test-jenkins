@@ -1,0 +1,8 @@
+SELECT
+    PipeNo
+FROM
+    View_Det_PipeNo
+WHERE
+    FacNo = :facNo
+GROUP BY
+    PipeNo;

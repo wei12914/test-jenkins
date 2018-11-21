@@ -1,0 +1,99 @@
+<div class="container-full" data-ng-controller="penaltyQueryController">
+	<div class="row m0 p0 Form_bg">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 P15">
+			<div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">首頁</a></li>
+						<li class="breadcrumb-item">查核處分資訊</li>
+						<li class="breadcrumb-item active" aria-current="page">公私場所處分資料</li>
+					</ol>
+				</nav>
+				<div id="pq" class=" From_area Open_data">
+					<div class="row col-md-9 col-sm-9 m0">
+						<div class="col-md-12">
+							<div class="col-md-5 col-sm-12 col-xs-12 MBO factory_name">
+								工廠：<input type="text" data-ng-model="factoryName" placeholder="(輸入管編或廠名)">
+							</div>
+							<div class="col-md-7 col-sm-12 col-xs-12 City_name">
+								告發開立縣市： 
+								<select data-ng-model="cityCode"
+									data-ng-options="item.value as item.label for item in cityList">
+									<option value="">請選擇縣市</option>
+								</select>
+							</div>
+
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-5 col-sm-12 col-xs-12 MBO Factory_address">
+								廠址：<input type="text" data-ng-model="address">
+							</div>
+							<div class="col-md-7 col-sm-12 col-xs-12 MBO Law_list">
+								違反法條： <input type="text" data-ng-model="law">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row col-md-3 col-sm-3 col-xs-12">
+				<button class=" Orang_btn btn btn-lg" data-ng-click="clickQuery()">查詢</button>
+				<button class=" Orang_btn btn btn-lg" data-ng-click="clickDownload()" data-ng-disabled="!(dataList.length > 0)">下載</button>
+			</div>
+			<br class="Clear">
+		</div>
+	</div>
+
+	<div class="col-lg-2 col-md-2 col-sm-1"></div>
+	<br class="Clear">
+	<div class="row m0 p0">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 Prl Penalty_table">
+			<table class="table table-striped table-bordered table-rwd">
+				<tbody>
+					<tr class="tr-only-hide" data-ng-hide="dataList == undefined" >
+						<th data-ng-click="sort('FacNo')" class="t01"><i data-ng-class="label['FacNo'].style"></i>管編</th>
+						<th data-ng-click="sort('FacName')" class="t02"><i data-ng-class="label['FacName'].style"></i>廠名</th>
+						<th data-ng-click="sort('CityCode')" class="t03"><i data-ng-class="label['CityCode'].style"></i>告發開立<br/>縣市</th>
+						<th data-ng-click="sort('FacAddr')" class="t04"><i data-ng-class="label['FacAddr'].style"></i>廠址</th>
+						<th data-ng-click="sort('DocumentNo')" class="t05"><i data-ng-class="label['DocumentNo'].style"></i>裁處書字號</th>
+						<th data-ng-click="sort('PenaltyDate')" class="t06"><i data-ng-class="label['PenaltyDate'].style"></i>裁處時間</th>
+						<th data-ng-click="sort('TransgressDate')" class="t07"><i data-ng-class="label['TransgressDate'].style"></i>違反時間</th>
+						<th data-ng-click="sort('TransgressLaw')" class="t08"><i data-ng-class="label['TransgressLaw'].style"></i>違反法條</th>
+						<th data-ng-click="sort('PenaltyMoney')" class="t09"><i data-ng-class="label['PenaltyMoney'].style"></i>裁處<br/>金額(元)</th>
+						<th data-ng-click="sort('TransgressState')" class="t10"><i data-ng-class="label['TransgressState'].style"></i>違反事實</th>
+					</tr>
+					<tr data-ng-repeat="item in dataList track by $index">
+						<td data-th="管編" data-ng-click="clickView(item.facNo)" ><a href="">{{item.facNo}}</a></td>
+						<td data-th="廠名">{{item.facName | noneDataFilter}}</td>
+						<td data-th="縣市">{{item.cityName | noneDataFilter}}</td>
+						<td data-th="廠址">{{item.facAddr | noneDataFilter}}</td>
+						<td data-th="裁處書字號">{{item.documentNo | noneDataFilter}}</td>
+						<td data-th="裁處時間">{{item.penaltyDate | noneDataFilter}}</td>
+						<td data-th="違反時間">{{item.transgressDate | noneDataFilter}}</td>
+						<td data-th="違反法條">{{item.transgressLaw | noneDataFilter}}</td>
+						<td data-th="裁處金額(元)">{{item.penaltyMoney | noneDataFilter | moneyFilter}}</td>
+						<td class="BBN" data-th="違反事實">{{item.transgressState | noneDataFilter}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div data-ng-hide="(dataList == undefined || dataList.length > 0 )" class="No_Con">
+				<span class="fas fa-info-circle fa-2x"></span>無資料
+			</div>
+			<nav aria-label="" class="text-center" data-ng-show="dataList.length > 0">
+	          <ul class="pagination justify-content-center pagination-sm">
+	            <li class="{{currentPage == 1?'page-item disabled':'page-item';}}">
+	              <a class="page-link" href="" data-ng-click="prev()">上一頁</a>
+	            </li>
+	            <li class="{{currentPage == page?'page-item active':'page-item';}}" data-ng-repeat="page in pageList track by $index"  >
+	              <a class="page-link" href="" data-ng-click="pageClick(page)">{{page}}</a>
+	            </li>
+	            <li class="{{currentPage == pageMax?'page-item disabled':'page-item';}}">
+	              <a class="page-link" href="" data-ng-click="next()">下一頁</a>
+	            </li>
+	          </ul>
+	        </nav>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-1"></div>
+	</div>
+</div>

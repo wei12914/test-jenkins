@@ -1,0 +1,21 @@
+SELECT 
+    b.CityName        AS cityName , 
+    a.FacNo           AS facNo, 
+    a.FacName         AS facName, 
+    a.FacAddr         AS facAddress, 
+    a.IndParkName     AS indparkName, 
+    a.IsLicence       AS licence, 
+    a.IsDetection     AS detection, 
+    a.IsApprove       AS approve, 
+    a.IsDeclaration   AS declaration, 
+    a.IsMonitoring    AS monitoring, 
+    a.IsPenalty       AS penalty, 
+    a.IsCommissioning AS commissioning 
+FROM 
+    com_factory a
+LEFT JOIN
+    com_city b 
+ON
+	a.CityCode = b.CityCode
+WHERE 
+    1 = 1

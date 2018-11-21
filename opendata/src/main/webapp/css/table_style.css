@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Pollutant_table width setting*/
+.Pollutant_table .t01{width:6%}
+.Pollutant_table .t02{width:3%}
+.Pollutant_table .t03{width:9%}
+.Pollutant_table .t04{width:9%}
+.Pollutant_table .t05{width:5%}
+.Pollutant_table .t06{width:5%}
+.Pollutant_table .t07{width:5%}
+.Pollutant_table .t08{width:8%}
+.Pollutant_table .t09{width:8%}
+.Pollutant_table .t10{width:6%}
+.Pollutant_table .t11{width:6%}
+.Pollutant_table .t12{width:6%}
+.Pollutant_table .t13{width:4%}
+.Pollutant_table .t14{width:7%}
+.Pollutant_table .t15{width:4%}
+.Pollutant_table .t16{width:3%}
+.Pollutant_table .t17{width:2%}/*fist_th*/
+
+/*Penalty_table width setting*/
+.Penalty_table .t01{width:8%}
+.Penalty_table .t02{width:8%}
+.Penalty_table .t03{width:9%}
+.Penalty_table .t04{width:10%}
+.Penalty_table .t05{width:10%}
+.Penalty_table .t06{width:7%}
+.Penalty_table .t07{width:7%}
+.Penalty_table .t08{width:10%}
+.Penalty_table .t09{width:8%}
+.Penalty_table .t10{width:23%}
+
+/*license_table width setting*/
+.license_table .t01{width:8%}
+.license_table .t02{width:8%}
+.license_table .t03{width:22%}
+.license_table .t04{width:20%}
+.license_table .t05{width:10%}
+.license_table .t06{width:27%}
+
+/*license_view_table setting*/
+.license_view_table .t01{ width:10%}
+.license_view_table .t02{ width:10%}
+.license_view_table .t03{ width:8%}
+.license_view_table .t04{ width:16%}
+.license_view_table .t05{ width:10%}
+.license_view_table .t06{ width:50%}
+
+/*Det_control_table setting*/
+.Det_control_table .t01{ width:5%}
+.Det_control_table .t02{ width:10%}
+.Det_control_table .t03{ width:10%}
+.Det_control_table .t04{ width:8%}
+.Det_control_table .t05{ width:10%}
+.Det_control_table .t06{ width:8%}
+.Det_control_table .t07{ width:15%}
+.Det_control_table .t08{ width:8%}
+.Det_control_table .t09{ width:8%}
+.Det_control_table .t10{ width:8%}
+.Det_control_table .t11{ width:10%}
+
+

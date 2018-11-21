@@ -1,0 +1,31 @@
+SELECT DISTINCT
+    DetectPosition AS v,
+    (
+        SELECT
+            Name
+        FROM
+            Com_Common
+        WHERE
+            Type = 'DetectPosition'
+        AND Code = detectPosition ) AS label
+FROM
+    (
+        SELECT
+            DetectPosition
+        FROM
+            Det_Pollutant
+        WHERE
+            FacNo = :facNo
+        GROUP BY
+            DetectPosition
+        UNION ALL
+        SELECT
+            DetectPosition
+        FROM
+            Det_ControlEquip
+        WHERE
+            FacNo = :facNo
+        GROUP BY
+            DetectPosition ) t
+ORDER BY
+    DetectPosition ASC

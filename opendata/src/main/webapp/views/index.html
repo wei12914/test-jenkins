@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>固定污染源資料公開管理資訊平台</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/all.css" rel="stylesheet">
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/index_style.css" rel="stylesheet">
+<link href="css/table_style.css" rel="stylesheet">
+<link rel="Shortcut Icon" type="image/x-icon" href="images/logo.ico" />
+<script type="text/javascript" src="http://api.tgos.tw/TGOS_API/tgos?ver=2&AppID=V8XUxd3nrLxHHEsR/VA1jqN/LrKzN9gmtvcoib5we5f0kN5g1LmfiQ==&APIKey=cGEErDNy5yN/1fQ0vyTOZrghjE+jIU6uSsxOglYmc8hiSduWti5f3liRFRWT0/BrOVYY7N94yY+O/rl45PBVVUjeiXtoxul7kGCXGpIp9FeZnoUpDIpnFgX37yvAclTNoT1d/Z3afp4w4PWqCJXB4kvhNTqI+m4JFcx94tNBqn+YaAW4FkLr1yPd1/6gYsdkXlOtvF5p7a1UGZmIxJ7rPUKWq5fzix9Fcv4AflPUdrlNeulRsP6XJeQ5dg1vvVmcTB8w+YY1EkG5+ENVKipiDxMJJMxPQPKdaQtgt4yyp6oH8pXZYnEO/qeG2XPi/bG4scX9C17z8+cvSEoWYu+X7kuAIHx9ZnnqniExlEpW+b90gM3aFOnXFvJ83d9+xp8nAm+VCN/6+Z5tdZ5uF7FlFA==" charset="utf-8"></script>
+<script type="text/javascript" src="lib/d3/d3.v4.min.js" charset="utf-8"></script>
+<script src="lib/require/require.js" data-main="js/app.main"></script>
+
+</head>
+<body >
+	<div class="container-full">
+		<div class="Top_area M_hidden">
+			<div class="Brand FL">
+				<img src="images/Logo.png" width="286" height="84">
+			</div>
+			<div class="Top_menu FR">
+				<ul>
+					<li><a href="#/ab/1">關於平台</a></li>
+					<li><a href="#/ab/2">常見問題</a></li>
+					<li><a href="#/ab/3">聯絡資訊</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="Header_banner M_hidden">
+			<div class="Title">
+				<h1>固定污染源資料公開</h1>
+		        <h4>Fixed pollution source data disclosure management information platform</h4>
+		        <h3>管理資訊平台</h3>
+			</div>
+			<img src="images/header_banner.png" width="1920" height="380">
+		</div>
+		<nav class="navbar" role="navigation" data-ng-controller="IndexController">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-ng-click="expandMen()">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="D_hidden">
+					<a class="navbar-brand" href="#"><img src="images/Logo.png"
+						width="286" height="84"></a>
+				</div>
+				<div class="D_hidden Clear Title">固定污染源資料公開管理資訊平台</div>
+				<div class="ng-class:menuExpand ?'collapse navbar-collapse in':'collapse navbar-collapse';">
+					<div class="row Main_area">
+						<ul class="nav navbar-nav navbar-center">
+							<li data-ng-click="closeMen('lq')"><a href="#lq"><span class="fas fa-tv"></span>列管工廠資料公開</a></li>
+							<li><a href="https://totalquantity.epa.gov.tw/ERC3/homepage/publishData.do?area=E,S,T" target="_blank"><span class="fas fa-chart-bar"></span>總量區內可供交易之排放量資訊</a></li>
+							<li data-ng-click="closeMen('eq')"><a href="#emq"><span class="fas fa-industry"></span>排放量申報資料</a></li>
+							<li class="nav-item dropdown" data-ng-click="clickPenalty()" >
+								<a class="nav-link dropdown-toggle" id="navbarDropdown"
+								role="button" >
+									<span class="fas fa-gavel"></span>
+									查核處分資訊
+									<span class="fas fa-caret-down"></span>
+								</a>
+								<div class="Dropdown_menu_setting" data-ng-show="penaltyDropdown">
+									<ul>
+										<li><a data-ng-click="closeMen('pq')" class="dropdown-item" href="#pq">公私場所處分資料</a></li>
+<!-- 										<li><a class="dropdown-item" href="#">環工技師懲戒資料</a></li> -->
+<!-- 										<li><a class="dropdown-item" href="#">專責人員徹癈證資料</a></li> -->
+<!-- 										<li><a class="dropdown-item" href="#">檢測機構查處資料</a></li> -->
+									</ul>
+								</div>
+							</li>
+							<li data-ng-click="closeMen()"><a href="#/rcq"><span class="fas fa-users">
+								</span>民眾參與表示意見</a>
+							</li>
+							<li class="D_hidden"><a href="#/ab/1"><span class="fas fa-chalkboard-teacher">
+								</span>關於平台</a>
+							</li>
+							<li class="D_hidden"><a href="#/ab/2"><span class="fas fa-question-circle">
+								</span>常見問題</a>
+							</li>
+							<li class="D_hidden"><a href="#"><span class="fas fa-phone-volume">
+								</span>詢問引導</a>
+							</li>
+							<li class="D_hidden"><a href="#/ab/3"><span class="fas fa-info-circle">
+								</span>聯絡資訊</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</nav>
+	</div>
+	<div ng-view></div>
+	<footer>
+		<div class="col-lg-12 col-md-12 col-sm-12 f01 Clear">
+			<ul>
+				<li>｜<a href="https://www.epa.gov.tw/" target="_blank">行政院環境保護署</a></li>
+				<li>｜<a href="https://taqm.epa.gov.tw/taqm/tw/default.aspx" target="_blank">空品監測網</a></li>
+				<li>｜<a href="https://prtr.epa.gov.tw/" target="_blank">列管污染源資料查詢系統</a></li>
+				<li>｜<a href="http://opendata.epa.gov.tw/" target="_blank">環境資源資料開放平臺</a></li>
+				<li>｜<a href="https://apmis.epa.gov.tw/" target="_blank">固定污染源管理資訊系統</a></li>
+				<li>｜<a href="https://air10.epa.gov.tw/" target="_blank">空污費暨排放量申報整合管理系統</a></li>
+				<li>｜<a href="https://eems.epa.gov.tw/" target="_blank">環保稽查處分管制系統</a>｜
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 f02 Clear">
+			<ul>
+				<li><span class="fas fa-users"></span>瀏覽人次:{{bCount}}</li>
+				<li><span class="far fa-calendar"></span>維護日期:{{maintainDate}}</li>
+				<li><span class="far fa-envelope"></span>
+					<a href="https://epamail.epa.gov.tw/front/mailboxhome" target="_blank">意見信箱</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 f02 Clear">
+			<ul>
+				<li><span class="far fa-building"></span>
+					環保署:10042臺北市中正區中華路一段83號 總機:(02)2311-7722
+				</li>
+				<li><span class="far fa-building"></span>
+					第二辦公室:10042臺北市中正區秀山街4號14樓 總機:(02)2371-2121(空保處)
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 f01 Clear">
+			<ul>
+				<li>｜<a>隱私權保護政策</a></li>
+				<li>｜<a>網站安全政策</a></li>
+				<li>｜<a>資訊安全規範</a></li>
+				<li>｜<a>網站資料開放宣告</a>｜</li>
+			</ul>
+		</div>
+		<div>
+			<p class="col-lg-12 col-md-12 col-sm-12 Clear">
+				請使用1280*768px以上(含)解析度與IE 11、Firefox、Chrome瀏覽器以取得最佳瀏覽效果
+			</p>
+		</div>
+	</footer>
+</body>
+</html>

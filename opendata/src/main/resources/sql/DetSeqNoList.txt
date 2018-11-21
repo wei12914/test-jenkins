@@ -1,0 +1,8 @@
+SELECT
+    SeqNo
+FROM
+    View_Det_SeqNo
+WHERE
+    FacNo = :facNo
+GROUP BY
+    SeqNo;

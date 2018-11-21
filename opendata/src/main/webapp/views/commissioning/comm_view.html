@@ -1,0 +1,90 @@
+<div class="container-full" data-ng-controller="commViewController">
+	<div class="row m0 p0">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 P15">
+			<div>
+		 		<nav aria-label="breadcrumb">
+	            	<ol class="breadcrumb">
+		                <li class="breadcrumb-item">首頁</li>
+		                <li class="breadcrumb-item">民眾參與表示意見</li>
+		                <li class="breadcrumb-item active" aria-current="page">復工試車計畫書檢視</li>
+		            </ol>
+	          	</nav>
+	          
+				<div class="col-lg-12 col-md-12 col-sm-12 Tab_area  Clear">
+					<div class="col-lg-12 col-md-12 Basic_infor_area">
+						<div>
+							<ul>
+								<li>管編:{{data.facNo}}</li>
+								<li>廠名：{{data.facName}}</li>
+								<li><button class="Orang_btn btn btn-md" data-ng-if="data.isAsk" data-ng-click="askQuestion()">提問及建議</button></li>
+								<li><button class="Gray_btn btn btn-md" data-ng-if="data.isQuestion" data-ng-click="viewQuestion()">問題彙整</button></li>
+							</ul>
+						</div>
+						<br>
+						<div class="Form_Date_area MT">
+							<ul>
+								<li>公開日期(完成申請且公開)：{{data.publicDate}}</li>
+								<li><button class="Gray_btn btn btn-md" data-ng-if="data.isPublic" data-ng-click="downloadFile()">復工試車計畫書下載</button></li>
+							</ul>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 Form_contain">
+							<div class="QA_area">
+								<h4>一、基本資料說明</h4>
+								<ul>
+									<li>
+										<span>試車期程(起):</span>
+										自{{data.testSDate}}起至 {{data.testEDate}}止 共{{data.totalDays}}日
+									</li>
+									<li><span>達到申請最大產能操作條件所需日數：</span>{{data.maxCapacityDays}}日</li>
+									<li><span>製程編號名稱：</span>{{data.mfrName}}</li>
+									<li><span>預定檢測日期：</span>{{data.detectSDate}}～{{data.detectEDate}}</li>
+									<li>
+										<span>說明：</span>
+										<pre style="white-space:pre-wrap; word-wrap:break-word;">{{data.comment}}</pre>
+									</li>
+								</ul>
+							</div>
+							<div class="QA_area">
+								<h4>二、試車步驟或程序說明</h4>
+								<div>
+									<span>說明：</span>
+									<pre style="white-space:pre-wrap; word-wrap:break-word;">{{data.stepComment}}</pre>
+								</div>
+							</div>
+							<div class="QA_area">
+								<h4>三、推估各試車步驟或程序之空氣污染物產生情形</h4>
+								<div>
+									<span>說明：</span>
+									<pre style="white-space:pre-wrap; word-wrap:break-word;">{{data.produceComment}}</pre>
+								</div>
+							</div>
+							<div class="QA_area">
+								<h4>四、防範污染超過排放標準或限制範圍之應變措施</h4>
+								<div>
+									<span>說明：</span>
+									<pre style="white-space:pre-wrap; word-wrap:break-word;">{{data.preventComment}}</pre>
+								</div>
+							</div>
+							<div class="QA_area">
+								<h4>五、空氣污染物排放檢測計劃</h4>
+								<div>
+									<span>說明：</span>
+									<pre style="white-space:pre-wrap; word-wrap:break-word;">{{data.detectionComment}}</pre>
+								</div>
+							</div>
+							<div class="QA_area BN">
+								<h4>六、空氣污染物改善措施說明</h4>
+								<div>
+									<span>說明：</span>
+									<pre style="white-space:pre-wrap; word-wrap:break-word;">{{data.improveComment}}</pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+	</div>
+</div>

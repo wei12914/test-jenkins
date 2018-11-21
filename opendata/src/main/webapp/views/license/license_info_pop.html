@@ -1,0 +1,144 @@
+<md-dialog>
+<div class="pop_div_setting">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title h4" id="myLargeModalLabel">許可證資料</h5>
+				<h6 class="modal-title h5">{{facNo}} {{facName}}</h6>
+				<h6 class="modal-title h5">{{mfrNo}} {{mfrName}}</h6>
+				<h6 class="modal-title h5">{{perNo}}</h6>
+				<button type="button" class="close" data-ng-click="close()" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="Pop_setting">
+				<div class="col-lg-12 col-md-12 col-sm-12 Tab_area">
+					<ul class="nav nav-tabs">
+						<li class="ng-class:lcsTabIndex == EQUIP_PIPE ?'active':'';" 
+							data-ng-click="activeLicenseTab(EQUIP_PIPE)">
+							<a href="">製程、主要設備及排放口資料</a>
+						</li>
+						<li class="ng-class:lcsTabIndex == POLLUTANT ?'active':'';" 
+							data-ng-click="activeLicenseTab(POLLUTANT)">
+							<a href="">污染排放及污染控制方式規定資料</a>
+						</li>
+						<li class="ng-class:lcsTabIndex == CONTROL_EQUIP ?'active':'';" 
+							data-ng-click="activeLicenseTab(CONTROL_EQUIP)">
+							<a href="">控制設施操作條件資料</a>
+						</li>
+						<li class="ng-class:lcsTabIndex == PIPELIMIT ?'active':'';" 
+							data-ng-click="activeLicenseTab(PIPELIMIT)">
+							<a href="">排放口管道限制資料</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div id="Pop_home" data-ng-show="lcsTabIndex == EQUIP_PIPE" class="ng-class:lcsTabIndex == EQUIP_PIPE ?'tab-pane fade active in':'tab-pane fade';">
+							<table class="table table-striped table-bordered table-rwd">
+								<tbody>
+									<tr class="tr-only-hide">
+										<th data-ng-click="lcsSort(lcsTab1, 'MfrNo')"><i data-ng-class="lcsTab1.label['MfrNo'].style">製程編號</th>
+										<th data-ng-click="lcsSort(lcsTab1, 'MfrName')"><i data-ng-class="lcsTab1.label['MfrName'].style">製程名稱</th>
+										<th data-ng-click="lcsSort(lcsTab1, 'EquipNo')"><i data-ng-class="lcsTab1.label['EquipNo'].style">設備編號</th>
+										<th data-ng-click="lcsSort(lcsTab1, 'EquipName')"><i data-ng-class="lcsTab1.label['EquipName'].style">設備名稱</th>
+										<th data-ng-click="lcsSort(lcsTab1, 'Monitor')"><i data-ng-class="lcsTab1.label['Monitor'].style">CEMS設置</th>
+										<th data-ng-click="lcsSort(lcsTab1, 'MonItem')"><i data-ng-class="lcsTab1.label['MonItem'].style">監測項目</th>
+									</tr>
+									<tr data-ng-repeat="item in equipPipeList track by $index">
+										<td data-th="製程編號">{{item.mfrNo | noneDataFilter}}</td>
+										<td data-th="製程名稱">{{item.mfrName | noneDataFilter}}</td>
+										<td data-th="設備編號">{{item.equipNo | noneDataFilter}}</td>
+										<td data-th="設備名稱">{{item.equipName | noneDataFilter}}</td>
+										<td data-th="CEMS設置">{{item.monitorName | noneDataFilter}}</td>
+										<td class="BBN" data-th="監測項目">{{item.monItem | noneDataFilter}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div data-ng-hide="equipPipeList.length" class="No_Con">
+								<span class="fas fa-info-circle fa-2x"></span>無資料
+							</div>
+						</div>
+						<div id="Pop_menu1" data-ng-show="lcsTabIndex == POLLUTANT" class="ng-class:lcsTabIndex == POLLUTANT ?'tab-pane fade active in':'tab-pane fade';">
+							<table class="table table-striped table-bordered table-rwd">
+								<tbody>
+									<tr class="tr-only-hide">
+										<th data-ng-click="lcsSort(lcsTab2, 'EquipNo')"><i data-ng-class="lcsTab2.label['EquipNo'].style">設備編號</th>
+										<th data-ng-click="lcsSort(lcsTab2, 'EquipName')"><i data-ng-class="lcsTab2.label['EquipName'].style">設備名稱</th>
+										<th data-ng-click="lcsSort(lcsTab2, 'ColKind')"><i data-ng-class="lcsTab2.label['ColKind'].style">廢氣收集方式</th>
+										<th data-ng-click="lcsSort(lcsTab2, 'EquipCol')"><i data-ng-class="lcsTab2.label['EquipCol'].style">處理設備集合</th>
+										<th data-ng-click="lcsSort(lcsTab2, 'PipeNo')"><i data-ng-class="lcsTab2.label['PipeNo'].style">排放口</th>
+										<th data-ng-click="lcsSort(lcsTab2, 'PollName')"><i data-ng-class="lcsTab2.label['PollName'].style">污染物名稱</th>
+										<th data-ng-click="lcsSort(lcsTab2, 'YearDischarge')"><i data-ng-class="lcsTab2.label['YearDischarge'].style">年排放量(公噸/年)</th>
+									</tr>
+									<tr data-ng-repeat="item in pollutantList track by $index">
+										<td data-th="設備編號">{{item.equipNo | noneDataFilter}}</td>
+										<td data-th="設備名稱">{{item.equipName | noneDataFilter}}</td>
+										<td data-th="廢氣收集方式">{{item.colKind | noneDataFilter}}</td>
+										<td data-th="處理設備集合">{{item.equipCol | noneDataFilter}}</td>
+										<td data-th="排放口">{{item.pipeNo | noneDataFilter}}</td>
+										<td data-th="污染物名稱">{{item.pollName | noneDataFilter}}</td>
+										<td class="BBN" data-th="年排放量(公噸/年)">{{item.yearDischarge | noneDataFilter}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div data-ng-hide="pollutantList.length" class="No_Con">
+								<span class="fas fa-info-circle fa-2x"></span>無資料
+							</div>
+						</div>
+						<div id="Pop_menu2" data-ng-show="lcsTabIndex == CONTROL_EQUIP" class="ng-class:lcsTabIndex == CONTROL_EQUIP ?'tab-pane fade active in':'tab-pane fade';">
+							<table class="table table-striped table-bordered table-rwd">
+								<tbody>
+									<tr class="tr-only-hide">
+										<th data-ng-click="lcsSort(lcsTab3, 'EquipNo')"><i data-ng-class="lcsTab3.label['EquipNo'].style">設備編號</th>
+										<th data-ng-click="lcsSort(lcsTab3, 'EquipCode')"><i data-ng-class="lcsTab3.label['EquipCode'].style">設備代碼</th>
+										<th data-ng-click="lcsSort(lcsTab3, 'EquipName')"><i data-ng-class="lcsTab3.label['EquipName'].style">設備名稱</th>
+										<th data-ng-click="lcsSort(lcsTab3, 'GasHanMin')"><i data-ng-class="lcsTab3.label['GasHanMin'].style">廢氣處理量最小值(Nm3/min)</th>
+										<th data-ng-click="lcsSort(lcsTab3, 'GasHanMax')"><i data-ng-class="lcsTab3.label['GasHanMax'].style">廢氣處理量最大值(Nm3/min)</th>
+										<th data-ng-click="lcsSort(lcsTab3, 'GasEffeRatio')"><i data-ng-class="lcsTab3.label['GasEffeRatio'].style">處理效率應大於(％)</th>
+									</tr>
+									<tr data-ng-repeat="item in controlEquipList track by $index">
+										<td data-th="設備編號">{{item.equipNo | noneDataFilter}}</td>
+										<td data-th="設備代碼">{{item.equipCode | noneDataFilter}}</td>
+										<td data-th="設備名稱">{{item.equipName | noneDataFilter}}</td>
+										<td data-th="廢氣處理量最小值(Nm3/min)">{{item.gasHanMin | noneDataFilter}}</td>
+										<td data-th="廢氣處理量最大值(Nm3/min)">{{item.gasHanMax | noneDataFilter}}</td>
+										<td class="BBN" data-th="處理效率應大於(％)">{{item.gasEffeRatio | noneDataFilter}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div data-ng-hide="controlEquipList.length" class="No_Con">
+								<span class="fas fa-info-circle fa-2x"></span>無資料
+							</div>
+						</div>
+						<div id="Pop_menu3" data-ng-show="lcsTabIndex == PIPELIMIT" class="ng-class:lcsTabIndex == PIPELIMIT ?'tab-pane fade active in':'tab-pane fade';">
+							<table class="table table-striped table-bordered table-rwd">
+								<tbody>
+									<tr class="tr-only-hide">
+										<th data-ng-click="lcsSort(lcsTab4, 'PipeNo')"><i data-ng-class="lcsTab4.label['PipeNo'].style">排放管道</th>
+										<th data-ng-click="lcsSort(lcsTab4, 'PipeHeight')"><i data-ng-class="lcsTab4.label['PipeHeight'].style">離地面高度(公尺)</th>
+										<th data-ng-click="lcsSort(lcsTab4, 'PipeLength')"><i data-ng-class="lcsTab4.label['PipeLength'].style">內徑長(公尺)</th>
+										<th data-ng-click="lcsSort(lcsTab4, 'PipeWidth')"><i data-ng-class="lcsTab4.label['PipeWidth'].style">內徑寬(公尺)</th>
+										<th data-ng-click="lcsSort(lcsTab4, 'PipeNorthTm2')"><i data-ng-class="lcsTab4.label['PipeNorthTm2'].style">北向TM2座標</th>
+										<th data-ng-click="lcsSort(lcsTab4, 'PipeEastTm2')"><i data-ng-class="lcsTab4.label['PipeEastTm2'].style">東向TM2座標</th>
+									</tr>
+									<tr data-ng-repeat="item in pipeLimitList track by $index">
+										<td data-th="排放管道">{{item.pipeNo | noneDataFilter}}</td>
+										<td data-th="離地面高度(公尺)">{{item.pipeHeight | noneDataFilter}}</td>
+										<td data-th="內徑長(公尺)">{{item.pipeLength | noneDataFilter}}</td>
+										<td data-th="內徑寬(公尺)">{{item.pipeWidth | noneDataFilter}}</td>
+										<td data-th="北向TM2座標">{{item.pipeNorthTm2 | noneDataFilter}}</td>
+										<td class="BBN" data-th="東向TM2座標">{{item.pipeEastTm2 | noneDataFilter}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div data-ng-hide="pipeLimitList.length" class="No_Con">
+								<span class="fas fa-info-circle fa-2x"></span>無資料
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</md-dialog>

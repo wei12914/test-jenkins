@@ -1,0 +1,697 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{ font-family: "Arial","微軟正黑體" }
+/* common use */
+.FL{ float: left;}
+.FR { float: right;}
+.Clear{ clear: both}
+.MB{margin-bottom:15px;}
+.MB2{margin-bottom:8px;}
+.MT{ margin-top:20px;}
+.MBO{ margin-bottom:0px; line-height: 30px}
+.m0{ margin-left:0px!important; margin-right:0px!important; }
+.p0{ padding-left: 0px!important; padding-right:0px!important }
+.P15{ padding: 15px 0px }
+.MT20{margin-top:20px}
+.PT20 ul{padding-top:20px}
+
+
+.Con{ font-size: 0.9em; padding: 10px 10px 10px 26px; line-height: 24px; letter-spacing: 1px }
+.Note{ font-size: 0.75em; color:#ff0000; line-height:14px; letter-spacing: 1px; padding: 15px 0px}
+.Note ul{ margin-left: 16px; }
+.Note li{ list-style-type: decimal; line-height: 21px }
+
+
+a{ color: #006ab0 }
+pre{ background:none; line-height: 30px; }
+select{ height: 34px; margin-bottom: 15px; border: 1px solid #afafaf; border-radius: 0px;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+34,f2f2f2+100 */
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top, #ffffff 34%, #f2f2f2 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #ffffff 34%,#f2f2f2 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #ffffff 34%,#f2f2f2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
+color:#000000;
+}
+select option{ height:20px; line-height:20px; padding:10px;cursor:pointer;}
+input{ border: 1px solid #afafaf; }
+input[type="text"] { height: 34px; line-height:18px}
+textarea{ width: 100%; padding: 10px }
+.Datepicker-box{ line-height: 28px;}
+.fa-calendar-alt:before{ color:#34a23f }
+.fa-calendar-alt.fa-lg{ font-size: 1.5em; position:relative; }
+
+
+.FS input{ width: 80%；}
+
+/* Hidden setting */
+.D_hidden, li.D_hidden{ display: none!important}
+.D_hidden_map, li.D_hidden_map{ display: none!important}
+
+/* button setting */
+.Orang_btn{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffb76b+9,ff7c00+69,ff7f04+100 */
+background: #ffb76b; /* Old browsers */
+background: -moz-linear-gradient(top, #ffb76b 9%, #ff7c00 69%, #ff7f04 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #ffb76b 9%,#ff7c00 69%,#ff7f04 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #ffb76b 9%,#ff7c00 69%,#ff7f04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* IE6-9 */
+color: #ffffff;
+}
+
+.Orang_btn.btn:hover, .Orang_btn.btn.active, .Orang_btn.btn:focus{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff7f04+0,ff7f04+0,ff7c00+41,ff7c00+41,ffb76b+93,ffb76b+93 */
+background: #ff7f04; /* Old browsers */
+background: -moz-linear-gradient(top, #ff7f04 0%, #ff7f04 0%, #ff7c00 41%, #ff7c00 41%, #ffb76b 93%, #ffb76b 93%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #ff7f04 0%,#ff7f04 0%,#ff7c00 41%,#ff7c00 41%,#ffb76b 93%,#ffb76b 93%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #ff7f04 0%,#ff7f04 0%,#ff7c00 41%,#ff7c00 41%,#ffb76b 93%,#ffb76b 93%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7f04', endColorstr='#ffb76b',GradientType=0 ); /* IE6-9 */
+color: #ffffff;
+
+}
+.Orang_btn.btn-lg{ padding: 10px 18px}
+.Orang_btn.btn-md, .Gray_btn.btn-md{ padding: 7px 30px}
+
+
+.Gray_btn{ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fffcfc+34,e8e8e8+100 */
+background: #fffcfc; /* Old browsers */
+background: -moz-linear-gradient(top, #fffcfc 34%, #e8e8e8 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #fffcfc 34%,#e8e8e8 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #fffcfc 34%,#e8e8e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcfc', endColorstr='#e8e8e8',GradientType=0 ); /* IE6-9 */
+color:#000000; border: 1px solid #d6d6d6;
+}
+
+.Gray_btn.btn:hover, .Gray_btn.btn.active, .Gray_btn.btn:focus {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e8e8e8+0,fffcfc+62 */
+background: #e8e8e8; /* Old browsers */
+background: -moz-linear-gradient(top, #e8e8e8 0%, #fffcfc 62%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #e8e8e8 0%,#fffcfc 62%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #e8e8e8 0%,#fffcfc 62%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', endColorstr='#fffcfc',GradientType=0 ); /* IE6-9 */
+color:#428bca;
+}
+
+.Gray_btn.btn-sm{ padding: 4px 6px; margin-right: 2px; margin-bottom:4px}
+
+
+
+
+
+
+
+/* table setting*/
+table { font-size: 0.85em; width: 100% }
+th{ background-color:#098315; color: #ffffff; }
+th, td {height: 40px; border-bottom: 1px solid #b7c79b; text-align:left; padding-left:4px; line-height: 20px }
+.Odd_bg_setting tr:nth-of-type(odd){ background-color:#f0ffd7; }
+.table-bordered{ border: none}
+.table-bordered>tbody>tr>th{ 
+background-color: #098315!important; 
+color: #ffffff;}
+
+.table-bordered>tbody>tr>th{}
+.table-bordered>tbody>tr>th, .table-bordered>tbody>tr>td{border-top:1px solid #b7c79b; 
+border-bottom:1px solid #b7c79b;  border-left:none; border-right: none; padding:8px 6px; line-height: 18px; height: auto}
+
+.table-striped>tbody>tr:nth-child(odd)>td{ background-color:#f0ffd7}
+.BN{ border:none!important; }
+
+
+
+
+
+/* Top menu setting*/
+.Brand{ width: 268px; height: 84px}
+.Brand img{ max-width: 80%; height: auto}
+.Top_menu li{ float: left; display: inline;}
+.Top_menu li a{ color: #ffffff; font-size: 0.8em; margin-left:10px;}
+.Top_area{ position: absolute; left:10px; right: 10px; top: 10px}
+.Header_banner .Title{ position: absolute; left: 16%; top: 10%;  color: #ffffff; text-shadow: 2px 2px 4px #282828; letter-spacing: 1px;}
+.Header_banner .Title h1, .Header_banner .Title h3{ font-weight: 500; }
+.Header_banner .Title h1{ font-size: 3.5em; line-height: 70px;}
+.Header_banner .Title h4{ font-size: 0.9em; line-height: 14px;}
+.Header_banner .Title h3{ font-size: 2.5em ;line-height: 58px;}
+.Header_banner img{ max-width: 100%; height: auto}
+
+/* navbar setting */
+.navbar-collapse, .navbar-header{ min-height: 60px; border-top: 1px solid #62b500; border-bottom: 1px solid #62b500;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#078b00+0,155694+77 */
+background: #078b00; /* Old browsers */
+background: -moz-linear-gradient(top, #078b00 0%, #155694 77%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #078b00 0%,#155694 77%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #078b00 0%,#155694 77%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#078b00', endColorstr='#155694',GradientType=0;
+); /* IE6-9 */ 
+box-shadow: 2px 3px 10px #888888;
+}
+
+.navbar-header{ min-width: 100%}
+.navbar-nav{ float: none; margin:auto 0}
+.navbar-nav li { text-align:center; text-shadow: 2px 2px 0.5px #2b2b2b;}
+.nav span.fas{ color: #ffffff; margin-right: 8px;  opacity: 0.7}
+.navbar-nav li a{ color: #ffffff; font-size: 1em; line-height: 32px;}
+.navbar{ margin-bottom:0px; border: 0px}
+.nav>li>a{ letter-spacing: 1px }
+.nav>li>a:hover, .nav>li>a:focus { background:none; color: #fff600 }
+.Main_area .nav>li>a{ padding: 10px 10px }
+a:hover, a:focus{ color: #fff600 }
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus { background:none;}
+.dropdown-menu{ min-width: 180px; background-color:#124F96;}
+.dropdown-menu li { line-height: 40px!important; border-bottom:1px solid #62b500; }
+.dropdown-menu li a{ font-size: 0.9em; letter-spacing: 1px; text-shadow: none }
+.dropdown-menu li a:hover{ text-decoration:none; color: #fff600}
+.navbar-toggle{ background-color:#3f3f3f;}
+
+
+/* From area setting */
+.Form_bg{ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d1d1d1+1,ffffff+15,ffffff+43,e8e8e8+100 */
+background: #d1d1d1; /* Old browsers */
+background: -moz-linear-gradient(top, #d1d1d1 1%, #ffffff 15%, #ffffff 43%, #e8e8e8 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #d1d1d1 1%,#ffffff 15%,#ffffff 43%,#e8e8e8 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #d1d1d1 1%,#ffffff 15%,#ffffff 43%,#e8e8e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1d1d1', endColorstr='#e8e8e8',GradientType=0 ); /* IE6-9 */
+
+}
+
+.From_area select{ width: 64%}
+.From_area{ font-size: 0.9em ;color:#15598c}
+
+
+/* Position setting */
+.breadcrumb{ background: none; font-size: 0.8em; padding: 0px; border-radius:0px;}
+.breadcrumb-item a{ color: #000000}
+.breadcrumb>.active { color: #087e11}
+
+
+
+/* factory-list-detail */
+.Unit_Title{ font-size: 1.2em; letter-spacing: 1px; color: #15598c; font-weight: 500; border-bottom: 2px dotted #1d6db8; line-height: 24px}
+.Unit_Title .fas{ color:#4ab900; margin-right: 4px }
+.Unit_secTitle{ font-size: 0.9em; color: #040404; letter-spacing: 1px; line-height: 40px}
+.S_text{ font-size:0.7em; line-height: 40px; letter-spacing: 1px;}
+.S_text li{  display: block; float: left; margin-right: 2%}
+.S_text .fas{ color: #006ab0; margin-right:2px; }
+
+.Map_box img{ max-width: 92%; height: auto; padding: 2%; border: 1px solid #d1d1d1; box-shadow: 2px 2px 2px #f1f1f1  }
+.Tab_area .nav>li>a{ padding-right: 15px;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+73,f1f1f1+99 */
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top, #ffffff 73%, #f1f1f1 99%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #ffffff 73%,#f1f1f1 99%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #ffffff 73%,#f1f1f1 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f1f1f1',GradientType=0 ); /* IE6-9 */
+border:1px solid #d1d1d1;
+font-size: 0.9em;
+padding:8px 10px;
+margin-right: 8px
+}
+.Tab_area .nav-tabs>li.active>a{ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d4d4d4+0,ffffff+59 */
+background: #d4d4d4; /* Old browsers */
+background: -moz-linear-gradient(top, #d4d4d4 0%, #ffffff 59%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #d4d4d4 0%,#ffffff 59%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #d4d4d4 0%,#ffffff 59%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4d4d4', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */  }
+.Tab_area .nav>li>a:hover, .Tab_area .nav>li>a:focus { color: #098315 }
+
+
+/* pop window */
+.modal-header .close{ margin-top: -20px }
+.modal-content{ height: 500px; padding: 10px; overflow:scroll; }
+.Pop_setting table{ font-size: 1em}
+.Pop_setting .Tab_area{ margin-top: 10px }
+.Pop_setting .Unit_secTitle{ margin-left: 2px; font-size: 1em}
+.modal-content{ border:none; border-radius:none;}
+
+
+
+/* 5_1_1Public participation */
+
+.Screening_area li{ display:block; float: left; margin-right:2%; color:#15598c }
+.Basic_infor_area { line-height: 24px; letter-spacing: 1px;color:#15598c }
+.Basic_infor_area li{ display: inline; margin-right: 2% }
+
+
+/* aboutus */
+.Aboutus_Collapse.accordion{ -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; border:1px solid #e7e7e7; margin:10px 10px 10px 26px; font-size: 0.9em}
+.Aboutus_Collapse .card{ line-height: 50px; }
+.Aboutus_Collapse .card-header { background-color: #f6f6f6; border-bottom:1px solid #e7e7e7; }
+.Aboutus_Collapse .card-body{ padding: 10px; line-height: 24px }
+.Aboutus_Collapse .card-body li{ line-height: 34px }
+.Aboutus_Collapse .card-body table, .Aboutus_Collapse .card-body td{ border: 1px solid #b7c79b }
+
+/* Pop_information */
+.Pop_infor_window .modal-footer{ text-align: center }
+.Pop_infor_window .modal-content { height: auto}
+
+
+/* Form_contain setting*/
+.Form_Date_area{ background-color: #217fc5; padding: 15px 15px; color: #ffffff;}
+.Form_Date_area li{ display: inline; margin-right: 2%; line-height: 36px}
+.Form_contain{ border:1px solid #c5c5c5; padding: 10px }
+.QA_area { border-bottom: 1px solid #c5c5c5; padding: 10px }
+.QA_area ul, .QA_area div{ font-size: 0.9em; color: #262626; letter-spacing: 1px; margin-left:34px; margin-top: 10px }
+.QA_area li{ line-height: 30px; display: block; }
+.QA_area  span, .Basic_contact_infor span{ color: #217fc5; margin-right: 4px; }
+.QA_area h4{ font-weight: bold; }
+
+.Qa_Suggest textarea{ width: 100% }
+
+.Basic_contact_infor{ border:1px solid #c5c5c5; padding: 10px }
+.Basic_contact_infor li{ line-height: 30px; display: block; font-size: 0.9em; color: #262626; letter-spacing: 1px; }
+
+
+.From_area .col-sm-4, .From_area .col-md-4, .From_area .col-xs-6{ position:unset; }
+
+/* TGOSMAP setting*/
+.TGOSMap{ width:48%; height:294px; padding:10px; border:1px solid #f3f3f3;margin-left:10px}
+.TGOSMap .hpack{ width:100%!important; height:100%!important;}
+.TGOSMap .hpack td{ border:none}
+.TGOSMap .hpack div{ background:none!important;}
+.TGOSMap .hpack img{padding:0px!important}
+
+/* no_content pop */
+.No_Con{  background-color:#f0ffd7; width: 100%; height: 200px; border: 1px solid #088315; text-align: center; line-height: 200px; color: #088315; font-size: 1.2em; font-weight:bold; }
+.No_Con span{margin-right:5px;  opacity: 0.5}
+
+/* Input no border setting*/
+.Nb_input { border:1px solid #afafaf; height:37px; padding:0px 4px; margin:5px 3px 5px 0px;}
+.Nb_input input{ border:none; font-size:1.2em; width:82px!important}
+.Nb_input .Datepicker-box { line-height:20px}
+
+.license_inputsetting ul{padding-top:8px}
+.license_inputsetting li{dispaly:block; float:left; padding:0px 3px}
+
+/* 排序 */
+.fa-caret-up:before{ margin-right:2px}
+
+
+/* Dropdown menu setting*/
+.Dropdown_menu_setting{ position:absolute; width:180px; top:60; background-color:#155694;z-index:999}
+.Dropdown_menu_setting li{font-size:0.9em!important;border-bottom:1px solid #62b500;line-height:40px!important; text-shadow:none;}
+/* footer setting*/
+footer{ 
+padding:10px;
+height:140px;
+font-size: 0.75em;
+letter-spacing: 0.5px;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#194779+0,4981bf+74 */
+background: #194779; /* Old browsers */
+background: -moz-linear-gradient(top, #194779 0%, #4981bf 74%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #194779 0%,#4981bf 74%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #194779 0%,#4981bf 74%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#194779', endColorstr='#4981bf',GradientType=0 ); /* IE6-9 */
+color:#ffffff;
+
+}
+
+.license_view_list li{ display:block; float:left; margin:5px}
+
+.Open_data input{ width:200px}
+.Sub_tab .nav-tabs{ margin:10px 0px}
+
+.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus{background:none}
+
+
+footer li{ display: block; float: left;  }
+footer .f02 li{ margin:0px 1% }
+footer .f02 .fas, footer .f02 .far{ margin-right: 4px; opacity: 0.6 }
+footer .f03 li{ margin:0px 1% }
+footer li a{ color: #ffffff; text-decoration: none;}
+footer li a:hover{ color: #ebffc9;text-decoration: none; }
+footer li, footer p{ line-height: 21px  }
+footer p{ margin-left:4px; }
+footer ul{ margin:4px 0px; }
+
+@media (max-width: 1920px) {
+	.navbar-nav li { margin-right:2%;font-size: 1.2em}
+	.Main_area{ padding-left:16%;}
+	.FS input{ width: 85% }
+
+}
+
+
+@media (max-width: 1440px) {
+	.navbar-nav li { margin-right:0%; line-height: 60px; font-size: 1em}
+	.Main_area{ padding-left:16%;}
+}
+
+
+
+@media (max-width: 1336px) {
+	.navbar-nav li { margin-right:0%;}
+
+}
+
+@media (max-width: 1300px) {
+	.col-md-2{ width:6%  }
+	.col-md-8{ width:88%  }
+	.Header_banner .Title{ left: 5%; top:14%;}
+	.Main_area{ padding-left: 5% }
+	
+
+}
+
+@media (max-width: 1080px) {
+	.Main_area .nav>li>a{ padding: 10px 6px }
+	.Header_banner .Title{ top:11%; }
+	.Header_banner .Title h1{ font-size: 3em; line-height: 70px }
+	
+
+}
+
+@media (max-width: 1024px) {
+	.navbar-nav li { margin-right:0px; font-size: 0.9em;}
+	.Brand img{ width: 70%}
+	.From_area  { font-size: 0.9em}
+	.Main_area{ padding-left:6%; }
+	.Main_area .nav>li>a{ padding: 10px 4px }
+	.table-rwd{width: 100%;}
+	.Header_banner .Title{ position: absolute; left: 6%; top: 10%; }
+	.Header_banner .Title h1, .Header_banner .Title h3{ font-weight: 500; }
+	.Header_banner .Title h1{ font-size: 3em; line-height: 60px;}
+	.Header_banner .Title h4{ font-size: 0.9em; line-height: 16px;}
+	.Header_banner .Title h3{ font-size: 2em ;line-height: 46px;}
+
+
+
+
+}
+
+
+
+@media (max-width: 995px){
+	footer{ height: 160px }
+
+}
+
+@media (max-width: 991px){
+	.Main_area{ padding-left:5%; }
+	.P15{ padding:15px 15px; }
+	.S_text{ line-height: 18px }
+	.S_text.MT{ margin-top: 4px }
+
+	.col-md-2{ width:0%  }
+	.col-md-8{ width:100%  }
+	.Header_banner .Title h1{ font-size: 2.5em; line-height: 50px;}
+	.Header_banner .Title h4{ font-size: 0.8em; line-height: 18px;}
+	.Header_banner .Title h3{ font-size: 1.5em ;line-height: 40px;}
+	.modal.in .modal-dialog{ width: 90% }
+	.Prl{ padding: 0px 15px }
+	.MBO{ margin-bottom:15px;}
+
+
+}
+
+@media (max-width: 948px){
+	.S_text li{ float: none; line-height: 24px }
+	.S_text .Orang_btn.btn-lg{ padding:6px 40px; }
+
+}
+
+@media (max-width: 849px){
+	.Pop_setting .nav-tabs{ border: none; margin: 10px 0px }
+	.Pop_setting .nav-tabs>li>a{ border-radius: 5px; margin-bottom: 10px; box-shadow: 2px 2px 0.5px #8c8c8c;}
+
+
+}
+
+@media (max-width: 767px){
+	.TGOSMap{ width:100%; height:400px; margin-left:0px}
+
+
+
+	
+}
+
+
+@media (max-width: 774px){
+	.navbar-collapse{ padding: 0px 0px }
+	.row.Main_area{ margin-right: 0px; margin-left: 0px }
+	.nav>li>a{ font-size: 0.7em }
+	.Main_area{ padding-left: 1% }
+	.Header_banner .Title{ left: 8% }
+	.Header_banner .Title h1{ font-size: 2em; left: 7%; line-height: 40px}
+	.FS input{ width: 90%; margin-bottom: 10px }
+
+
+}
+
+@media (max-width: 768px){
+	.p0{ padding-left: 15px!important; padding-right:15px!important }
+	.Top_menu li a{ color: #ffffff; font-size: 0.6em; margin-left:10px;}
+	.Header_banner .Title{ position: absolute; left: 8%; top: 10%; }
+	.Header_banner .Title h1, .Header_banner .Title h3{ font-weight: 500; }
+	.Header_banner .Title h1{ font-size: 2.2em; line-height: 40px;}
+	.Header_banner .Title h4{ font-size: 0.8em; line-height: 18px;}
+	.Header_banner .Title h3{ font-size: 1.2em ;line-height: 26px;}
+
+	.nav>li>a{ font-size: 0.85em; letter-spacing: 0px}
+	.Main_area{ padding-left:3%; }
+	.From_area .Orang_btn{ margin: 0 auto}
+	.Main_area .nav>li>a{ padding: 10px 2px }
+	.navbar-nav li{ margin-right: 2px }
+	.row.Main_area{ margin-left:0px; margin-right:0px; }
+	.table-bordered>tbody>tr>td{ padding:0px 0px; height: auto; line-height: 30px}
+	.table-rwd.table-bordered td{ border-bottom:1px solid #b7c79b !important;}
+	.Gray_btn.btn-sm{ padding: 4px 8px; margin-right: 6px}
+	.FS input{ width: 90.5%; margin-bottom: 0px }
+	.table-rwd.table-bordered td.BBN{border-bottom:none!important}
+	
+	.License_Clear{ clear:both}
+	.Factory_address input{width:83%}
+	.Law_list input{width:77%}
+
+
+	
+
+	footer{ height: 180px}
+
+
+
+
+	
+	
+}
+
+@media (max-width: 767px){
+	.M_hidden{ display: none}
+	.D_hidden, li.D_hidden{ display: inherit!important;}
+
+	.navbar-header .Title{ font-size: 1.8em; line-height:30px;color: #ffffff; text-align: center; font-weight: bold; text-shadow: 2px 2px 10px #2b2b2b; letter-spacing: 1px}
+	.navbar-header{min-height: 90px}
+	.navbar-brand{ padding: 9px 15px}
+	.navbar-brand img{ width: 54%; height: auto;}
+	.navbar-toggle{ background:none;}
+	.icon-bar{ background-color: #ffffff}
+	.navbar-collapse{ background: none; min-width: 100%; background-color:#124f91; padding-left:0px;padding-right:0px;}
+	.navbar-nav li{ text-align: left; font-size: 1.1em; padding-left: 20px; border-bottom:1px solid #62b500; }
+	.Main_area{ padding-left:0%;}
+	.From_area{ font-size: 1em}
+	.Orang_btn.btn-lg{ padding: 10px 40px}
+	select, input { height: 36px;}
+	.Nb_input input{ height:28px}
+	/*.From_area select{ width: 80%;}*/
+	input[type=checkbox] { height: 18px}
+	.S_text li{ float:left; line-height: 40px; margin-right: 4%; margin-bottom: 10px }
+	.navbar-collapse .row{ margin:0px 0px; }
+	.D_hidden_map, li.D_hidden_map{ display: inherit!important;}
+	.M_hidden_map, li.M_hidden_map{ display: none}
+	.dropdown-menu{ margin-left: 4% }
+	.dropdown-menu li{ border: none }
+	.dropdown-menu li a:hover{ color: #fff600; text-decoration: underline; }
+	.FS input{ width: 91%; }
+	.FS2 select { width: 88.5%;}
+	.Dropdown_menu_setting {position:relative; background:none; width:100%;font-size:0.9em}
+	.Dropdown_menu_setting ul{margin-left:10px}
+	.Dropdown_menu_setting li{border:none}
+	.Dropdown_menu_setting li a:hover{color:#fff600}
+
+}
+@media (max-width: 768px) {
+ 
+  .table-rwd{min-width: 100%;}
+  /*針對tr去做隱藏*/
+  tr.tr-only-hide {display: none !important;}
+  /*讓tr變成區塊主要讓他有個區塊*/
+  .table-rwd tr{
+    display: block;
+    border: 1px solid #b7c79b;
+    margin: 5px 0px 15px 0px;
+
+  }
+  .table-rwd td {
+    text-align: left;
+    font-size:1em;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+	}
+	.table-rwd td:before {
+    /*最重要的就是這串*/
+    content: attr(data-th) "  ";
+    /*最重要的就是這串*/
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+	margin-right: 6px;
+    color: #ffffff;
+    background-color: #098315;
+    position: absolute;
+    left:0px;
+    top:0px;
+    min-height:70px;
+    bottom: 0px;
+    width:20%;
+    text-align: left;
+    padding-left:6px;
+
+
+  }
+
+
+  /*當RWD縮小的時候.table-bordered 會有兩條線，所以針對.table-bordered去做修正*/
+  .table-rwd.table-bordered td,.table-rwd.table-bordered th,.table-rwd.table-bordered{border:0;}
+  .table-bordered>tbody>tr>th, .table-bordered>tbody>tr>td{ padding-left:calc(20% + 6px); }
+  .table-bordered>tbody>tr>td{ height:auto; line-height: 36px; position:relative;}
+
+  
+}
+
+@media (max-width: 615px){
+
+	.FS input{ width: 90%; }
+	.FS2 select { width: 87%;}
+}
+
+
+@media (max-width: 574px){
+	.FS input, .FS2 select { width: 95%!important;}
+}
+
+}
+
+@media (max-width: 533px){
+	.Tab_area .nav>li>a{ font-size: 0.8em; padding-right:6px; padding: 8px 8px }
+
+
+
+}
+
+@media (max-width: 480px){
+	.navbar-brand{ padding:9px 0px 9px 15px }
+	.navbar-header .Title{ font-size:1.3em; line-height: 40px }
+	.From_area{ font-size: 0.9em; }
+	table{ font-size: 0.9em }
+	.Gray_btn.btn-sm{ margin-right: 2% }
+	.navbar-collapse .row{ margin-right: 0px;  margin-left:0px;}
+	.navbar-collapse{ padding-right:0px; padding-left: 0px  }
+	.Unit_Title{ font-size: 1em }
+	.S_text li { line-height: 20px }
+	.Map_box img{ max-width:100% }
+	.Form_Date_area li { display: block; line-height: 36px }
+	.Form_Date_area.MT{ margin-top: 0px }
+	.Dpn li{ display: block; }
+
+	footer{ height: 240px}
+
+}
+
+@media (max-width: 463px){
+	.Tab_area .nav>li>a{ font-size: 0.8em; padding-right:4px; padding: 6px 4px }
+	.table-bordered>tbody>tr>td{ height:auto; line-height: 35px!important; padding-top:2px;}
+	.table-rwd td:before{padding-top:2px;}
+
+}
+
+@media (max-width: 420px){
+
+
+	footer{ height: 260px}
+}
+
+
+@media (max-width: 414px){
+	.table-rwd td:before{width:32%}
+	.table-bordered>tbody>tr>th, .table-bordered>tbody>tr>td{ padding-left:calc(32% + 6px); }
+    .License_M_Clear{clear:both}
+    .Factory_address input{width:84%}
+	.Law_list input{width:75%}
+	.factory_name input{width:84%}
+	/*.City_name select{ width:83%}*/
+	.pagination-sm>li>a, .pagination-sm>li>span{padding:5px 8px}
+	.SP_CL{display:block;margin-bottom:10px}
+}
+
+
+
+@media (max-width: 410px){
+	.Tab_area .nav>li>a{ margin-right: 6px; padding: 4px 2px }
+
+}
+
+@media (max-width: 400px){
+	footer{ height: 290px}
+}
+
+@media (max-width: 370px){
+	footer{ height: 320px}
+}
+
+@media (max-width: 368px){
+	.Tab_area .nav>li>a{ font-size: 0.9em; padding-right:4px; padding: 4px 6px }
+
+}
+
+@media (max-width: 360px){
+	svg {margin-left:-30px}
+	.Law_list input{width:73%}
+	.pagination-sm>li>a, .pagination-sm>li>span{padding:4px 5px}
+}
+
+.pop_div_setting{
+	display:block;
+	opacity:1;
+    overflow-x: auto;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+    background:rgba(10%,10%,10%,0.6);
+	
+}
+
+.pop_div_setting th, .pop_div_setting td{font-size:0.8em;  font-family: "Arial","微軟正黑體"}
+
+.pop_div_setting2{
+	display:block;
+	opacity:1;
+	overflow:none!important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+    background:rgba(10%,10%,10%,0.6);
+	
+}
+
+.pop_div_setting2 .modal-dialog{ max-width:400px!important;padding-top:15%; margin:0 auto}
+.pop_div_setting2 .modal-content{height:100px!important;overflow:hidden!important;line-height:40px;text-align:center;font-size:1.4em;color:#ff7f04;font-weight:bold;margin:10px }
+.pop_div_setting2 .fa-exclamation-triangle:before{ margin-right:10px}
+.pop_div_setting2 .modal-content p{ color:#2b2b2b; font-weight:100!important;font-size:0.9em;letter-spacing:1px}
+.pop_div_setting2 .modal-content.Success_blue{ color:#2C79C3}
+.modal-content pre{ font-size:0.8em!important; font-weight:normal}
+
+
+g line{
+	stroke-dasharray: 4,4;
+}

@@ -1,0 +1,8 @@
+SELECT DISTINCT
+    MonDate2 AS MonDate
+FROM
+    Mon_ConMonitor
+WHERE
+    FacNo = :facNo
+ORDER BY
+    MonDate2 DESC

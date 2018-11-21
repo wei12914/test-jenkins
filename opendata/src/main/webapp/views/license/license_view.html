@@ -1,0 +1,529 @@
+<div class="container-full" data-ng-controller="licenseViewController">
+	<div class="row m0 p0">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 P15">
+			<div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">首頁</li>
+						<li class="breadcrumb-item">列管工廠資料公開</li>
+						<li class="breadcrumb-item active" aria-current="page">{{subHeader}}</li>
+					</ol>
+				</nav>
+				<div class="Unit_Title">
+					<span class="fas fa-building"></span>{{facNo}}{{facName}}
+				</div>
+				<div class="Unit_secTitle"  data-ng-hide="supervisorList.length < 1">專責人員</div>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<table data-ng-hide="supervisorList.length < 1">
+							<tbody>
+								<tr>
+									<th>姓名</th>
+									<th>等級</th>
+									<th>類別</th>
+									<th>資格證號</th>
+								</tr>
+								<tr data-ng-repeat="item in supervisorList track by $index">
+									<td data-th="姓名">{{item.name | noneDataFilter}}</td>
+									<td data-th="等級">{{item.levelName | noneDataFilter}}</td>
+									<td data-th="類別">{{item.kindName | noneDataFilter}}</td>
+									<td data-th="資格證號">{{item.licenceNo | noneDataFilter}}</td>
+								</tr>
+
+							</tbody>
+						</table>
+						<div class="S_text MT">
+							<ul>
+								<li><span class="fas fa-map-marked"></span>{{zipCode}}{{facAddr}}</li>
+								<li><span class="fas fa-warehouse"></span>{{indParkName}}</li>
+								<li class="D_hidden_map" data-ng-click="showMap()">
+									<span class="fas fa-search"></span>地圖
+								</li>
+								<li>
+									<button class=" Orang_btn btn btn-lg" data-ng-click="downloadCsv()">下載</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm1"></div>
+				<div id="TGMap" 
+					class="col-lg-6 col-md-6 col-sm-6 text-center Map_box M_hidden_map TGOSMap">
+				</div>
+				<div id="lvtab" class="col-lg-12 col-md-12 col-sm-12 Tab_area MT Clear">
+					<ul class="nav nav-tabs">
+						<li class="ng-class:tabIndex == INSTALL_OPERATE ?'active':'';" 
+							data-ng-click="activeTab(INSTALL_OPERATE)" data-ng-show="licence" >
+							<a href="">設置及操作許可證</a>
+						</li>
+						<li class="ng-class:tabIndex == FUEL_RIGHT ?'active':'';" 
+							data-ng-click="activeTab(FUEL_RIGHT)" data-ng-show="licence" >
+							<a href="">燃料使用使用證</a>
+						</li>
+						<li class="ng-class:tabIndex == DETECTION ?'active':'';" 
+							data-ng-click="activeTab(DETECTION)" data-ng-show="detection" >
+							<a href="">排放檢測資料</a>
+						</li>
+						<li class="ng-class:tabIndex == APPROVE ?'active':'';" 
+							data-ng-click="activeTab(APPROVE)" data-ng-show="approve">
+							<a href="">排放量認可資料</a>
+						</li>
+						<li class="ng-class:tabIndex == DECLARATION ?'active':'';" 
+							data-ng-click="activeTab(DECLARATION)" data-ng-show="declaration">
+							<a href="">燃料使用量與排放量申報資料</a>
+						</li>
+						<li class="ng-class:tabIndex == MONITORING ?'active':'';" 
+							data-ng-click="activeTab(MONITORING)" data-ng-show="monitoring" >
+							<a href="">連續監測資料</a>
+						</li>
+						<li class="ng-class:tabIndex == PENALTY ?'active':'';" 
+							data-ng-click="activeTab(PENALTY)" data-ng-show="penalty" >
+							<a href="">處分公開資料</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div id="home" data-ng-show="tabIndex == INSTALL_OPERATE" class="ng-class:tabIndex == INSTALL_OPERATE ?'tab-pane fade active in':'tab-pane fade';">
+							<table class="table table-striped table-bordered table-rwd">
+								<tbody>
+									<tr class="tr-only-hide">
+										<th data-ng-click="sort(tab1, 'MfrNo')"><i data-ng-class="tab1.label['MfrNo'].style">製程</th>
+										<th data-ng-click="sort(tab1, 'MfrName')"><i data-ng-class="tab1.label['MfrName'].style">製程名稱</th>
+										<th data-ng-click="sort(tab1, 'PerNo')"><i data-ng-class="tab1.label['PerNo'].style">許可證號</th>
+										<th data-ng-click="sort(tab1, 'EffDate')"><i data-ng-class="tab1.label['EffDate'].style">生效日期</th>
+										<th data-ng-click="sort(tab1, 'AvlDate')"><i data-ng-class="tab1.label['AvlDate'].style">有效期限</th>
+										<th></th>
+									</tr>
+									<tr data-ng-repeat="item in installOperateList track by $index">
+										<td data-th="製程">{{item.mfrNo | noneDataFilter}}</td>
+										<td data-th="製程名稱">{{item.mfrName | noneDataFilter}}</td>
+										<td data-th="許可證號">{{item.perNo | noneDataFilter}}</td>
+										<td data-th="生效日期">{{item.effDate | noneDataFilter}}</td>
+										<td data-th="有效期限">{{item.avlDate | noneDataFilter}}</td>
+										<td class="BBN" data-th="項目">
+											<button class="Gray_btn btn btn-sm" data-ng-click="showLicence(item)" data-ng-show="item.licence" >許可證資料</button>
+											<button class="Gray_btn btn btn-sm" data-ng-click="showTechnician(item)" data-ng-show="item.technician" >技師資料</button>
+											<span data-ng-show="(item.licence==false && item.technician==false)">&nbsp</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div data-ng-hide="(installOperateList == undefined || installOperateList.length > 0 )" class="No_Con">
+								<span class="fas fa-info-circle fa-2x"></span>無資料
+							</div>
+							<nav aria-label="" class="text-center" data-ng-show="installOperateList.length > 0">
+								<ul class="pagination justify-content-center pagination-sm">
+									<li class="{{tab1.currentPage == 1?'page-item disabled':'page-item';}}">
+						              <a class="page-link" href="" data-ng-click="prev(tab1)">上一頁</a>
+						            </li>
+						            <li class="{{tab1.currentPage == page?'page-item active':'page-item';}}" data-ng-repeat="page in tab1.pageList track by $index"  >
+						              <a class="page-link" href="" data-ng-click="pageClick(tab1, page)">{{page}}</a>
+						            </li>
+						            <li class="{{tab1.currentPage == tab1.pageMax?'page-item disabled':'page-item';}}">
+						              <a class="page-link" href="" data-ng-click="next(tab1)">下一頁</a>
+						            </li>
+								</ul>
+							</nav>
+						</div>
+						<div id="menu1" data-ng-show="tabIndex == FUEL_RIGHT" class="ng-class:tabIndex == FUEL_RIGHT ?'tab-pane fade active in':'tab-pane fade';">
+							<table class="table table-striped table-bordered table-rwd">
+								<tbody>
+									<tr class="tr-only-hide">
+										<th data-ng-click="sort(tab2, 'PerNo')"><i data-ng-class="tab2.label['PerNo'].style">許可證號</th>
+										<th data-ng-click="sort(tab2, 'ClassCode')"><i data-ng-class="tab2.label['ClassCode'].style">類別</th>
+										<th data-ng-click="sort(tab2, 'ApprovalQty')"><i data-ng-class="tab2.label['ApprovalQty'].style">核定量</th>
+										<th data-ng-click="sort(tab2, 'UnitCode')"><i data-ng-class="tab2.label['UnitCode'].style">單位</th>
+										<th data-ng-click="sort(tab2, 'EffDate')"><i data-ng-class="tab2.label['EffDate'].style">生效日期</th>
+										<th data-ng-click="sort(tab2, 'AvlDate')"><i data-ng-class="tab2.label['AvlDate'].style">有效日期</th>
+										<th>成份</th>
+									</tr>
+									<tr data-ng-repeat="item in fuelRightList track by $index">
+										<td data-th="許可證號">{{item.perNo}}</td>
+										<td data-th="類別">{{item.className}}</td>
+										<td data-th="核定量">{{item.approvalQty}}</td>
+										<td data-th="單位">{{item.unitName}}</td>
+										<td data-th="生效日期">{{item.effDate}}</td>
+										<td data-th="有效日期">{{item.avlDate}}</td>
+										<td data-th="成份" style="vertical-align: middle" class="BBN">
+											<button class="Gray_btn btn btn-sm" data-ng-click="showFuelComp(item.perNo)" >成份</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div data-ng-hide="(fuelRightList == undefined || fuelRightList.length > 0 )" class="No_Con">
+								<span class="fas fa-info-circle fa-2x"></span>無資料
+							</div>
+							<nav aria-label="" class="text-center" data-ng-show="fuelRightList.length > 0">
+								<ul class="pagination justify-content-center pagination-sm">
+									<li class="{{tab2.currentPage == 1?'page-item disabled':'page-item';}}">
+						              <a class="page-link" href="" data-ng-click="prev(tab2)">上一頁</a>
+						            </li>
+						            <li class="{{tab2.currentPage == page?'page-item active':'page-item';}}" data-ng-repeat="page in tab2.pageList track by $index"  >
+						              <a class="page-link" href="" data-ng-click="pageClick(tab2, page)">{{page}}</a>
+						            </li>
+						            <li class="{{tab2.currentPage == tab2.pageMax?'page-item disabled':'page-item';}}">
+						              <a class="page-link" href="" data-ng-click="next(tab2)">下一頁</a>
+						            </li>
+								</ul>
+							</nav>
+						</div>
+						<div id="menu2" data-ng-show="tabIndex == DETECTION" class="ng-class:tabIndex == DETECTION ?'tab-pane fade active in':'tab-pane fade';">
+							<div class="Unit_secTitle  license_inputsetting">
+								<ul>
+									<li>檢測日期：</li>
+									<li>								
+										<div class="FL Nb_input" data-ng-click="datePickerEvent('sd')"> 
+											<input id="sd" type="text" data-ng-model="det.startDate" class="Datepicker-box" style="width:100px;" date-picker />
+											<span class="far fa-calendar-alt fa-lg"></span>
+								    	</div>
+								    	<span class="FL">~</span>
+								    	<div class=" FL Nb_input"  data-ng-click="datePickerEvent('ed')">
+											<input id="ed" type="text" data-ng-model="det.endDate" class="Datepicker-box" style="width:100px;" date-picker />
+											<span class="far fa-calendar-alt fa-lg"></span>
+										</div>
+									</li>
+								</ul>
+								<div class="Clear">
+								<ul>
+									<li>檢測位置： 
+										<select data-ng-change="changePosition(det.detectPosition)"
+											data-ng-model="det.detectPosition"
+											data-ng-options="item.value as item.label for item in detect.positionList">
+										<option value="">請選擇</option>
+										</select>
+									</li>
+									<li>檢測類別：
+										<select data-ng-model="det.detectType"
+											data-ng-options="item.value as item.label for item in detect.typeList">
+											<option value="">請選擇</option>
+										</select>
+									</li>
+									<li class="License_Clear">管道編號：
+										<select data-ng-model="det.pipeNo"
+											data-ng-options="item.value as item.label for item in detect.pipeNoList">
+											<option value="">請選擇</option>
+										</select>
+									</li>
+<!-- 									<li>序次：  -->
+<!-- 										<select data-ng-model="det.seqNo" -->
+<!-- 											data-ng-options="item.value as item.label for item in detect.seqNoList"> -->
+<!-- 											<option value="">請選擇</option> -->
+<!-- 										</select> -->
+<!-- 									</li> -->
+									<li class="License_M_Clear">
+										<button class=" Orang_btn btn btn-md" data-ng-click="clickDetQuery()">查詢</button>
+									</li>	
+								</ul>
+								</div>
+							</div>
+							<div class="PT20">
+								<ul class="nav nav-tabs Clear" data-ng-hide="((detPollutantList==undefined || detPollutantList.length<0)&&(detControlEquipList==undefined || detControlEquipList.length<0))">
+									<li class="ng-class:detTabIndex == DET_POLLUTANT ?'active':'';" 
+										data-ng-click="activeDetectTab(DET_POLLUTANT)">
+										<a href="">污染物檢測結果</a>
+									</li>
+									<li class="ng-class:detTabIndex == DET_CONTROL ?'active':'';" 
+										data-ng-click="activeDetectTab(DET_CONTROL)">
+										<a href="">控制設備操作條件</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div id="d1" data-ng-show="detTabIndex == DET_POLLUTANT" class="ng-class:detTabIndex == DET_POLLUTANT ?'tab-pane fade active in':'tab-pane fade';">
+										<table class="table table-striped table-bordered table-rwd Pollutant_table">
+											<tbody>
+												<tr class="tr-only-hide" data-ng-hide="(detPollutantList == undefined || detPollutantList.length < 0 )">
+													<th class="t17" data-ng-click="detSort(detTab1, 'SeqNo')"><i data-ng-class="detTab1.label['SeqNo'].style">序次</th>
+													<th class="t01" data-ng-click="detSort(detTab1, 'DetectDate')"><i data-ng-class="detTab1.label['DetectDate'].style">檢測日期</th>
+													<th class="t02" data-ng-click="detSort(detTab1, 'CompCode')"><i data-ng-class="detTab1.label['CompCode'].style">代碼</th>
+													<th class="t03" data-ng-click="detSort(detTab1, 'CompName')"><i data-ng-class="detTab1.label['CompName'].style">檢測機構<br/>名稱</th>
+													<th class="t04" data-ng-click="detSort(detTab1, 'MethodName')"><i data-ng-class="detTab1.label['MethodName'].style">檢測方法</th>
+													<th class="t05" data-ng-click="detSort(detTab1, 'AirWat')"><i data-ng-class="detTab1.label['AirWat'].style">排氣<br/>濕度(%)</th>
+													<th class="t06" data-ng-click="detSort(detTab1, 'AirTmp')"><i data-ng-class="detTab1.label['AirTmp'].style">排氣<br/>溫度(℃)</th>
+													<th class="t07" data-ng-click="detSort(detTab1, 'AirSpd')"><i data-ng-class="detTab1.label['AirSpd'].style">排氣<br/>速度(m/s)</th>
+													<th class="t08" data-ng-click="detSort(detTab1, 'WatQty')"><i data-ng-class="detTab1.label['WatQty'].style">濕基實測<br/>排氣量<br/>(Nm3/min)</th>
+													<th class="t09" data-ng-click="detSort(detTab1, 'DryQty')"><i data-ng-class="detTab1.label['DryQty'].style">乾基實測<br/>排氣量<br/>(Nm3/min)</th>
+													<th class="t10" data-ng-click="detSort(detTab1, 'CO2Comp')"><i data-ng-class="detTab1.label['CO2Comp'].style">CO2<br/>排氣<br/>組成</th>
+													<th class="t11" data-ng-click="detSort(detTab1, 'O2Comp')"><i data-ng-class="detTab1.label['O2Comp'].style">O2<br/>排氣<br/>組成</th>
+													<th class="t12" data-ng-click="detSort(detTab1, 'COComp')"><i data-ng-class="detTab1.label['COComp'].style">CO<br/>排氣<br/>組成</th>
+													<th class="t13" data-ng-click="detSort(detTab1, 'OxyMin')"><i data-ng-class="detTab1.label['OxyMin'].style">含氧<br/>基準</th>
+													<th class="t14" data-ng-click="detSort(detTab1, 'PollName')"><i data-ng-class="detTab1.label['PollName'].style">污染物</th>
+													<th class="t15" data-ng-click="detSort(detTab1, 'FixCon')"><i data-ng-class="detTab1.label['FixCon'].style">校正<br/>濃度</th>
+													<th class="t16" data-ng-click="detSort(detTab1, 'Unit')"><i data-ng-class="detTab1.label['Unit'].style">單位</th>
+												</tr>
+												<tr data-ng-repeat="item in detPollutantList track by $index">
+													<td data-th="序次">{{item.seqNo | noneDataFilter}}</td>
+													<td data-th="檢測日期">{{item.detectDate | noneDataFilter}}</td>
+													<td data-th="代碼">{{item.compCode | noneDataFilter}}</td>
+													<td data-th="檢測機構名稱">{{item.compName | noneDataFilter}}</td>
+													<td data-th="檢測方法">{{item.methodName | noneDataFilter}}</td>
+													<td data-th="排氣濕度(%)">{{item.airWat | noneDataFilter}}</td>
+													<td data-th="排氣溫度(℃)">{{item.airTmp | noneDataFilter}}</td>
+													<td data-th="排氣速度(m/s)">{{item.airSpd | noneDataFilter}}</td>
+													<td data-th="濕基實測排氣量(Nm3/min)">{{item.watQty | noneDataFilter}}</td>
+													<td data-th="乾基實測排氣量(Nm3/min)">{{item.dryQty | noneDataFilter}}</td>
+													<td data-th="CO2排氣組成">{{item.co2Comp | noneDataFilter}}</td>
+													<td data-th="O2排氣組成">{{item.o2Comp | noneDataFilter}}</td>
+													<td data-th="CO排氣組成">{{item.cocomp | noneDataFilter}}</td>
+													<td data-th="含氧基準">{{item.oxyMin | noneDataFilter}}</td>
+													<td data-th="污染物">{{item.pollName | noneDataFilter}}</td>
+													<td data-th="校正濃度">{{item.fixCon | noneDataFilter}}</td>
+													<td data-th="單位" class="BBN">{{item.unitName | noneDataFilter}}</td>
+												</tr>
+											</tbody>
+										</table>
+										<div data-ng-hide="(detPollutantList == undefined || detPollutantList.length > 0 )" class="No_Con">
+											<span class="fas fa-info-circle fa-2x"></span>無資料
+										</div>
+										<nav aria-label="" class="text-center" data-ng-show="detPollutantList.length > 0" >
+											<ul class="pagination justify-content-center pagination-sm">
+												<li class="{{detTab1.currentPage == 1?'page-item disabled':'page-item';}}">
+									              <a class="page-link" href="" data-ng-click="prevDet(detTab1)">上一頁</a>
+									            </li>
+									            <li class="{{detTab1.currentPage == page?'page-item active':'page-item';}}" data-ng-repeat="page in detTab1.pageList track by $index"  >
+									              <a class="page-link" href="" data-ng-click="pageClickDet(detTab1, page)">{{page}}</a>
+									            </li>
+									            <li class="{{detTab1.currentPage == detTab1.pageMax?'page-item disabled':'page-item';}}">
+									              <a class="page-link" href="" data-ng-click="nextDet(detTab1)">下一頁</a>
+									            </li>
+											</ul>
+										</nav>
+									</div>
+									<div id="d2" data-ng-show="detTabIndex == DET_CONTROL" class="ng-class:detTabIndex == DET_CONTROL ?'tab-pane fade active in':'tab-pane fade';">
+										<table class="table table-striped table-bordered table-rwd">
+											<tbody>
+												<tr class="tr-only-hide Det_control_table" data-ng-hide="(detControlEquipList == undefined || detControlEquipList.length < 0 )">
+													<th data-ng-click="detSort(detTab2, 'SeqNo')" class="t01"><i data-ng-class="detTab2.label['SeqNo'].style">序次</th>
+													<th data-ng-click="detSort(detTab2, 'DetectDate')" class="t02"><i data-ng-class="detTab2.label['DetectDate'].style">檢測日期</th>
+													<th data-ng-click="detSort(detTab2, 'EquipNo')" class="t03"><i data-ng-class="detTab2.label['EquipNo'].style">設備編號</th>
+													<th data-ng-click="detSort(detTab2, 'EquipName')" class="t04"><i data-ng-class="detTab2.label['EquipName'].style">設備名稱</th>
+													<th data-ng-click="detSort(detTab2, 'Kind')" class="t05"><i data-ng-class="detTab2.label['Kind'].style">類別</th>
+													<th data-ng-click="detSort(detTab2, 'RecCode')" class="t06"><i data-ng-class="detTab2.label['RecCode'].style">記錄<br/>項目代碼</th>
+													<th data-ng-click="detSort(detTab2, 'RecName')" class="t07"><i data-ng-class="detTab2.label['RecName'].style">記錄項目名稱</th>
+													<th data-ng-click="detSort(detTab2, 'DetectOutput')" class="t08"><i data-ng-class="detTab2.label['DetectOutput'].style">檢測當時<br/>用產量</th>
+													<th data-ng-click="detSort(detTab2, 'DetectMaxQty')" class="t09"><i data-ng-class="detTab2.label['DetectMaxQty'].style">定檢期間<br/>最大量</th>
+													<th data-ng-click="detSort(detTab2, 'PerMaxQty')" class="t10"><i data-ng-class="detTab2.label['PerMaxQty'].style">許可<br/>最大量</th>
+													<th data-ng-click="detSort(detTab2, 'UnitName')" class="t11"><i data-ng-class="detTab2.label['UnitName'].style">單位</th>
+												</tr>
+												<tr data-ng-repeat="item in detControlEquipList track by $index">
+													<td data-th="序次">{{item.seqNo | noneDataFilter}}</td>
+													<td data-th="檢測日期">{{item.detectDate | noneDataFilter}}</td>
+													<td data-th="設備編號">{{item.equipNo | noneDataFilter}}</td>
+													<td data-th="設備名稱">{{item.equipName | noneDataFilter}}</td>
+													<td data-th="類別">{{item.kindName | noneDataFilter}}</td>
+													<td data-th="記錄項目代碼">{{item.recCode | noneDataFilter}}</td>
+													<td data-th="記錄項目名稱">{{item.recName | noneDataFilter}}</td>
+													<td data-th="檢測當時用產量">{{item.detectOutput | noneDataFilter}}</td>
+													<td data-th="定檢期間最大量">{{item.detectMaxQty | noneDataFilter}}</td>
+													<td data-th="許可最大量">{{item.perMaxQty | noneDataFilter}}</td>
+													<td data-th="單位" class="BBN">{{item.unitName | noneDataFilter}}</td>
+												</tr>
+											</tbody>
+										</table>
+										<div data-ng-hide="(detControlEquipList == undefined || detControlEquipList.length > 0 )" class="No_Con">
+											<span class="fas fa-info-circle fa-2x"></span>無資料
+										</div>
+										<nav aria-label="" class="text-center" data-ng-show="detControlEquipList.length > 0">
+											<ul class="pagination justify-content-center pagination-sm">
+												<li class="{{detTab2.currentPage == 1?'page-item disabled':'page-item';}}">
+									              <a class="page-link" href="" data-ng-click="prevDet(detTab2)">上一頁</a>
+									            </li>
+									            <li class="{{detTab2.currentPage == page?'page-item active':'page-item';}}" data-ng-repeat="page in detTab2.pageList track by $index"  >
+									              <a class="page-link" href="" data-ng-click="pageClickDet(detTab2, page)">{{page}}</a>
+									            </li>
+									            <li class="{{detTab2.currentPage == detTab2.pageMax?'page-item disabled':'page-item';}}">
+									              <a class="page-link" href="" data-ng-click="nextDet(detTab2)">下一頁</a>
+									            </li>
+									         </ul>
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="menu3" data-ng-show="tabIndex == APPROVE" class="ng-class:tabIndex == APPROVE ?'tab-pane fade active in':'tab-pane fade';">
+							<div class="Unit_secTitle" data-ng-hide="app.fileName == undefined">
+								<span>{{app.fileName}}</span>
+								<button class=" Orang_btn btn btn-lg" data-ng-click="downloadAppFile(app.aplNo)">下載</button>
+							</div>
+							<div data-ng-hide="app.fileName != undefined" class="No_Con">
+								<span class="fas fa-info-circle fa-2x"></span>無資料
+							</div>
+						</div>
+						<div id="menu4" data-ng-show="tabIndex == DECLARATION" class="ng-class:tabIndex == DECLARATION ?'tab-pane fade active in':'tab-pane fade';">
+							<div class="Sub_tab">
+								<ul class="nav nav-tabs Clear ">
+									<li class="ng-class:decTabIndex == DEC_DISCHARGE ?'active':'';" 
+										data-ng-click="activeDeclarationTab(DEC_DISCHARGE)">
+										<a href="">空污費及排放量申報</a>
+									</li>
+									<li class="ng-class:decTabIndex == DEC_FUELUSAGE ?'active':'';" 
+										data-ng-click="activeDeclarationTab(DEC_FUELUSAGE)">
+										<a href="">燃料申報使用量</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div id="p1" data-ng-show="decTabIndex == DEC_DISCHARGE" 
+									class="ng-class:decTabIndex == DEC_DISCHARGE ?'tab-pane fade active in':'tab-pane fade';">
+										<table class="table table-striped table-bordered table-rwd">
+											<tbody>
+												<tr class="tr-only-hide">
+													<th data-ng-click="decSort(decTab1, 'Period')"><i data-ng-class="decTab1.label['Period'].style">申報季別</th>
+													<th data-ng-click="decSort(decTab1, 'VOCs')"><i data-ng-class="decTab1.label['VOCs'].style">揮發性有機物</th>
+													<th data-ng-click="decSort(decTab1, 'TSP')"><i data-ng-class="decTab1.label['TSP'].style">粒狀污染物</th>
+													<th data-ng-click="decSort(decTab1, 'SOx')"><i data-ng-class="decTab1.label['SOx'].style">硫氧化物</th>
+													<th data-ng-click="decSort(decTab1, 'NOx')"><i data-ng-class="decTab1.label['NOx'].style">氮氧化物</th>
+													<th data-ng-click="decSort(decTab1, 'Status')"><i data-ng-class="decTab1.label['Status'].style">審查狀態</th>
+												</tr>
+												<tr data-ng-repeat="item in decDischargeList track by $index">
+													<td data-th="申報季別">{{item.period | noneDataFilter}}</td>
+													<td data-th="揮發性有機物">{{item.vocs | noneDataFilter}}</td>
+													<td data-th="粒狀污染物">{{item.tsp | noneDataFilter}}</td>
+													<td data-th="硫氧化物">{{item.sox | noneDataFilter}}</td>
+													<td data-th="氮氧化物">{{item.nox | noneDataFilter}}</td>
+													<td data-th="審查狀態" class="BBN">{{item.status | noneDataFilter}}</td>
+												</tr>
+											</tbody>
+										</table>
+										<div data-ng-hide="(decDischargeList == undefined || decDischargeList.length > 0 )" class="No_Con">
+											<span class="fas fa-info-circle fa-2x"></span>無資料
+										</div>
+										<nav aria-label="" class="text-center" data-ng-show="decDischargeList.length > 0" >
+											<ul class="pagination justify-content-center pagination-sm">
+												<li class="{{decTab1.currentPage == 1?'page-item disabled':'page-item';}}">
+									              <a class="page-link" href="" data-ng-click="prevDec(decTab1)">上一頁</a>
+									            </li>
+									            <li class="{{decTab1.currentPage == page?'page-item active':'page-item';}}" data-ng-repeat="page in decTab1.pageList track by $index"  >
+									              <a class="page-link" href="" data-ng-click="pageClickDec(decTab1, page)">{{page}}</a>
+									            </li>
+									            <li class="{{decTab1.currentPage == decTab1.pageMax?'page-item disabled':'page-item';}}">
+									              <a class="page-link" href="" data-ng-click="nextDec(decTab1)">下一頁</a>
+									            </li>
+											</ul>
+										</nav>
+									</div>
+									<div id="p2" data-ng-show="decTabIndex == DEC_FUELUSAGE" 
+									class="ng-class:decTabIndex == DEC_FUELUSAGE ?'tab-pane fade active in':'tab-pane fade';">
+										<table class="table table-striped table-bordered table-rwd">
+											<tbody>
+												<tr class="tr-only-hide" >
+													<th data-ng-click="decSort(decTab2, 'Period')"><i data-ng-class="decTab2.label['Period'].style">申報季別</th>
+													<th data-ng-click="decSort(decTab2, 'PerNo')"><i data-ng-class="decTab2.label['PerNo'].style">燃料許可證</th>
+													<th data-ng-click="decSort(decTab2, 'ClassCode')"><i data-ng-class="decTab2.label['ClassCode'].style">類別</th>
+													<th data-ng-click="decSort(decTab2, 'PerQty')"><i data-ng-class="decTab2.label['PerQty'].style">核可使用量</th>
+													<th data-ng-click="decSort(decTab2, 'Month1')"><i data-ng-class="decTab2.label['Month1'].style">第一個月</th>
+													<th data-ng-click="decSort(decTab2, 'Month2')"><i data-ng-class="decTab2.label['Month2'].style">第二個月</th>
+													<th data-ng-click="decSort(decTab2, 'Month3')"><i data-ng-class="decTab2.label['Month3'].style">第三個月</th>
+													<th data-ng-click="decSort(decTab2, 'UnitCode')"><i data-ng-class="decTab2.label['UnitCode'].style">單位</th>
+												</tr>
+												<tr data-ng-repeat="item in decFuelUsagelist track by $index">
+													<td data-th="申報季別">{{item.period | noneDataFilter}}</td>
+													<td data-th="燃料許可證">{{item.perNo | noneDataFilter}}</td>
+													<td data-th="類別">{{item.className | noneDataFilter}}</td>
+													<td data-th="核可使用量">{{item.perQty | noneDataFilter}}</td>
+													<td data-th="第一個月">{{item.month1 | noneDataFilter}}</td>
+													<td data-th="第二個月">{{item.month2 | noneDataFilter}}</td>
+													<td data-th="第三個月">{{item.month3 | noneDataFilter}}</td>
+													<td data-th="單位" class="BBN">{{item.unitName | noneDataFilter}}</td>
+												</tr>
+											</tbody>
+										</table>
+										<div data-ng-hide="(decFuelUsagelist == undefined || decFuelUsagelist.length > 0 )" class="No_Con">
+											<span class="fas fa-info-circle fa-2x"></span>無資料
+										</div>
+										<nav aria-label="" class="text-center" data-ng-show="decFuelUsagelist.length > 0" >
+											<ul class="pagination justify-content-center pagination-sm">
+												<li class="{{decTab2.currentPage == 1?'page-item disabled':'page-item';}}">
+									              <a class="page-link" href="" data-ng-click="prevDec(decTab2)">上一頁</a>
+									            </li>
+									            <li class="{{decTab2.currentPage == page?'page-item active':'page-item';}}" data-ng-repeat="page in decTab2.pageList track by $index"  >
+									              <a class="page-link" href="" data-ng-click="pageClickDec(decTab2, page)">{{page}}</a>
+									            </li>
+									            <li class="{{decTab2.currentPage == decTab2.pageMax?'page-item disabled':'page-item';}}">
+									              <a class="page-link" href="" data-ng-click="nextDec(decTab2)">下一頁</a>
+									            </li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="menu5" data-ng-show="tabIndex == MONITORING" class="ng-class:tabIndex == MONITORING ?'tab-pane fade active in':'tab-pane fade';">
+							<div class="Unit_secTitle license_view_list" >
+								<ul>
+								<li>監測日期： 
+								<select data-ng-model="mon.date"
+									data-ng-options="item.value as item.label for item in mon.dateList">
+									<option value="">請選擇</option>
+								</select></li>
+								<li>
+								管道編號： 
+								<select data-ng-model="mon.pipeNo"
+									data-ng-options="item.value as item.label for item in mon.pipeNoList">
+									<option value="">請選擇</option>
+								</select></li>
+								<li>
+								<button class=" Orang_btn btn btn-md" data-ng-click="clickMonitorQuery()">查詢</button>
+								</li>
+								</ul>
+							</div>
+							<br class="Clear">
+							<div id="lcopc" class="FL" data-ng-show="mon.opcList.length > 0"></div>
+							<div id="lcso2" class="FL" data-ng-show="mon.so2List.length > 0"></div>
+							<div id="lcnox" class="FL" data-ng-show="mon.noxList.length > 0"></div>
+							<div id="lcco" class="FL" data-ng-show="mon.coList.length > 0"></div>
+							<div id="lctrs" class="FL" data-ng-show="mon.trsList.length > 0"></div>
+							<div id="lchcl" class="FL" data-ng-show="mon.hclList.length > 0"></div>
+							<div id="lcvoc" class="FL" data-ng-show="mon.vocList.length > 0"></div>
+							<div id="lco2" class="FL" data-ng-show="mon.o2List.length > 0"></div>
+							<div id="lcco2" class="FL" data-ng-show="mon.co2List.length > 0"></div>
+							<div id="lcflow" class="FL" data-ng-show="mon.flowList.length > 0"></div>
+							<div id="lctemp" class="FL" data-ng-show="mon.tempList.length > 0"></div>
+							<div data-ng-hide="(lc == undefined || lc )" class="No_Con Clear">
+								<span class="fas fa-info-circle fa-2x"></span>無資料
+							</div>
+						</div>
+						<div id="menu6" data-ng-show="tabIndex == PENALTY" class="ng-class:tabIndex == PENALTY ?'tab-pane fade active in':'tab-pane fade';">
+							<div class="Unit_secTitle license_view_table">
+								<table class="table table-striped table-bordered table-rwd">
+									<tbody>
+										<tr class="tr-only-hide">
+											<th data-ng-click="sort(tab7, 'DocumentNo')" class="t01"><i data-ng-class="tab7.label['DocumentNo'].style">裁處書字號</th>
+											<th data-ng-click="sort(tab7, 'PenaltyDate')" class="t02"><i data-ng-class="tab7.label['PenaltyDate'].style">裁處時間</th>
+											<th data-ng-click="sort(tab7, 'TransgressDate')" class="t03"><i data-ng-class="tab7.label['TransgressDate'].style">違反時間</th>
+											<th data-ng-click="sort(tab7, 'TransgressLaw')" class="t04"><i data-ng-class="tab7.label['TransgressLaw'].style">違反法條</th>
+											<th data-ng-click="sort(tab7, 'PenaltyMoney')" class="t05"><i data-ng-class="tab7.label['PenaltyMoney'].style">裁處金額(元)</th>
+											<th data-ng-click="sort(tab7, 'TransgressState')" class="t06"><i data-ng-class="tab7.label['TransgressState'].style">違反事實</th>
+										</tr>
+										<tr data-ng-repeat="item in penaltyList track by $index">
+											<td data-th="裁處書字號">{{item.documentNo | noneDataFilter}}</td>
+											<td data-th="裁處時間">{{item.penaltyDate | noneDataFilter}}</td>
+											<td data-th="違反時間">{{item.transgressDate | noneDataFilter}}</td>
+											<td data-th="違反法條">{{item.transgressLaw | noneDataFilter}}</td>
+											<td data-th="裁處金額(元)">{{item.penaltyMoney | noneDataFilter | moneyFilter}}</td>
+											<td data-th="違反事實" class="BBN">{{item.transgressState | noneDataFilter}}</td>
+										</tr>
+									</tbody>
+								</table>
+								<div data-ng-hide="(penaltyList == undefined || penaltyList.length > 0 )" class="No_Con">
+									<span class="fas fa-info-circle fa-2x"></span>無資料
+								</div>
+								<nav aria-label="" class="text-center" data-ng-show="penaltyList.length > 0">
+								<ul class="pagination justify-content-center pagination-sm">
+									<li class="{{tab7.currentPage == 1?'page-item disabled':'page-item';}}">
+						              <a class="page-link" href="" data-ng-click="prev(tab7)">上一頁</a>
+						            </li>
+						            <li class="{{tab7.currentPage == page?'page-item active':'page-item';}}" data-ng-repeat="page in tab7.pageList track by $index"  >
+						              <a class="page-link" href="" data-ng-click="pageClick(tab7, page)">{{page}}</a>
+						            </li>
+						            <li class="{{tab7.currentPage == tab1.pageMax?'page-item disabled':'page-item';}}">
+						              <a class="page-link" href="" data-ng-click="next(tab7)">下一頁</a>
+						            </li>
+								</ul>
+							</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

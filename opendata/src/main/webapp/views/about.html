@@ -1,0 +1,393 @@
+<div class="container-full" data-ng-controller="aboutController">
+	<div class="row m0 p0">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 P15">
+			<div>
+				<!--Breadcrumb begin-->
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">首頁</li>
+						<li class="breadcrumb-item active" aria-current="page">關於平台</li>
+					</ol>
+				</nav>
+				<!--Breadcrumb end-->
+				<!--Title begin-->
+				<div class="Unit_Title">
+					<span class="fas fa-chalkboard"></span>關於平台
+				</div>
+				<!--Title end-->
+				<!--about us contain begin-->
+				<div class="Aboutus_Collapse accordion" id="accordionExample">
+					<div class="card">
+						<div class="card-header" id="heading1">
+							<h5 class="mb-0">
+								<button class="btn btn-link " type="button" 
+									data-toggle="collapse" data-target="#collapse1"
+									aria-expanded="false" aria-controls="collapse1"
+									data-ng-class="c1 ? '' : 'collapsed'" data-ng-click="c1 = !c1">平台說明</button>
+							</h5>
+						</div>
+						<div id="collapse1" class="collapse"
+							aria-labelledby="heading1" data-parent="#accordionExample"
+							data-ng-class="c1 ? 'in' : ''" data-ng-style="c1 ? {'height': 'auto'} : ''">
+							<div class="card-body">
+								<ul>
+									<li>(一) 本署依空污法增訂資訊公開規定，建置公開平台，供民眾查詢，並提供線上閱覽及檔案下載等服務，創造便民服務。</li>
+									<li>(二) 依空污法第35條規定，提供可公開之各項資料，本署有權隨時修改資料公開之具體項目、內容及使用規範。</li>
+									<li>(三) 為確保公開平台正常運作，如修改設定、提供內容及下載限制，造成使用者之損失，本署不負賠償之責任。</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="heading2">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button"
+									data-toggle="collapse" data-target="#collapse2"
+									aria-expanded="false" aria-controls="collapse2">資料來源及內容期程</button>
+							</h5>
+						</div>
+						<div id="collapse2" class="collapse"
+							aria-labelledby="heading2" data-parent="#accordionExample">
+							<div class="card-body">
+								<table class="table table-striped table-bordered table-rwd">
+									<tbody>
+										<tr class="tr-only-hide">
+											<th>資料類別</th>
+											<th>資料公開查詢期間</th>
+											<th>資料來源</th>
+										</tr>
+										<tr>
+											<td data-th="資料類別">操作與設置許可證</td>
+											<td data-th="資料公開查詢期間">可查詢非篩除工廠之製程最近一張有效許可證更新頻率:資料有異動</td>
+											<td data-th="資料來源">固定污染源管理資訊系統</td>
+										</tr>
+										<tr>
+											<td data-th="資料類別">生煤使用許可及申報資料</td>
+											<td data-th="資料公開查詢期間">
+												<p>可查詢下列資料:</p>
+												<ul>
+													<li>1.非篩除工廠有效使用許可證</li>
+													<li>2.106年起申報生煤使用量</li>
+												</ul>
+												<p>更新頻率:申報資料異動</p>
+											</td>
+											<td data-th="資料來源">固定污染源管理資訊系統</td>
+										</tr>
+										<tr>
+											<td data-th="資料類別">定期檢測申報資料</td>
+											<td data-th="資料公開查詢期間">可查詢申報102年起檢測結果且完成審查資料更新頻率:申報檢測資料異動</td>
+											<td data-th="資料來源">固定污染源管理資訊系統</td>
+										</tr>
+										<tr>
+											<td data-th="資料類別">試車檢測申報資料</td>
+											<td data-th="資料公開查詢期間">
+												<p>可查詢下列資料:</p>
+												<ul>
+													<li>1.申報102年起完成審查之申請許可試車檢測資料</li>
+													<li>2.108年起申請復工試車檢測資料更新頻率: 檢測資料有異動</li>
+												</ul>
+												<p>更新頻率: 檢測資料有異動</p>
+											</td>
+											<td data-th="資料來源">固定污染源管理資訊系統</td>
+										</tr>
+										<tr>
+											<td data-th="資料類別">空污費排放量申報</td>
+											<td data-th="資料公開查詢期間">
+												<p>可查詢102年起申報4種污染物實際排放量資料</p>
+												<p>更新頻率: 每季</p>
+											</td>
+											<td data-th="資料來源">固定污染源空污費暨排放量申報整合管理系統</td>
+										</tr>
+										<tr>
+											<td data-th="資料類別">排放量認可資料</td>
+											<td data-th="資料公開查詢期間">
+												<p>可查詢高屏地區空氣污染物總量管制計畫第一期程下列資料:</p>
+												<ul>
+													<li>1.排放量認可資料</li>
+													<li>2.可交易之削減量差額認可資訊</li>
+												</ul>
+												<p>更新頻率: 認可資料異動之隔日</p>
+											</td>
+											<td data-th="資料來源">空氣污染物削減量差額管理平台</td>
+										</tr>
+										<tr>
+											<td data-th="資料類別">專責人員設置</td>
+											<td data-th="資料公開查詢期間">可查詢指定工廠現行之專責人員更新頻率: 專責人員有異動</td>
+											<td data-th="資料來源">專責人員設置動態系統</td>
+										</tr>
+										<tr>
+											<td data-th="資料類別">列管污染源裁處資料源處分資料</td>
+											<td data-th="資料公開查詢期間">
+												<p>可查詢「固定空污」及「營建工程」其裁處日期自102年起之資料</p>
+												<p>更新頻率: 每月</p>
+											</td>
+											<td data-th="資料來源">環保稽查處分管制系統</td>
+										</tr>
+										<tr>
+											<td data-th="資料類別">固定污染源自動連續監測數據</td>
+											<td data-th="資料公開查詢期間">
+												<p>可查詢指定工廠及管道前30天自動連續監測污染物之小時濃度值</p>
+												<p>更新頻率: 每天</p>
+											</td>
+											<td data-th="資料來源"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="heading3">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button"
+									data-toggle="collapse" data-target="#collapse3"
+									aria-expanded="false" aria-controls="collapse3">免責聲明</button>
+							</h5>
+						</div>
+						<div id="collapse3" class="collapse"
+							aria-labelledby="heading3" data-parent="#accordionExample">
+							<div class="card-body">
+								<ul>
+									<li>(一) 公開平台資料使用者不得宣稱版權所有</li>
+									<li>(二) 使用者閱覽、下載公開平台資料時，應特別注意各項資料之發布時間及其時效性。</li>
+									<li>(三) 本平台提供之開放資料，不構成任何資料提供機關申述、保證或暗示其推薦、同意、許可或核准之意思表示；各資料提供機關僅於知悉其所提供之開放資料有錯誤或遺漏時，負修正及補充之責。</li>
+									<li>(四) 使用者如利用本公開平台資料，因故意或過失致資料提供機關遭受損害，或第三人因此向資料提供機關請求賠償損害，使用者應對各機關負賠償責任，本署概不負責；若造成本署損害，使用者亦應負損害賠償責任。</li>
+									<li>(五) 因線路或設備故障、檢修、保養、停用，致無法繼續提供資料時，如使用者受有損害或損失，本署不負賠償責任。</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="heading4">
+							<h5 class="mb-0">
+								<button class="btn btn-link" type="button"
+									data-toggle="collapse" data-target="#collapse4"
+									aria-expanded="false" aria-controls="collapse4"
+									data-ng-class="c3 ? '' : 'collapsed'" data-ng-click="c3 = !c3">聯絡資訊</button>
+							</h5>
+						</div>
+						<div id="collapse4" class="collapse"
+							aria-labelledby="heading4" data-parent="#accordionExample"
+							data-ng-class="c3 ? 'in' : ''" data-ng-style="c3 ? {'height': 'auto'} : ''">
+							<div class="card-body">
+								<div>
+									<div class="MB MT BGN">(一)行政院環境保護署</div>
+									<table>
+										<tbody>
+											<tr>
+												<th colspan="2">洽詢業務</th>
+												<th>連絡單位</th>
+												<th>分機</th>
+											</tr>
+											<tr>
+												<td colspan="2">公開平台系統操作相關問題</td>
+												<td>環保署空保處</td>
+												<td>02-23712121</td>
+											</tr>
+											<tr>
+												<td rowspan="5">查核處分資料</td>
+												<td>列管污染源裁處資料</td>
+												<td>環境督察總隊</td>
+												<td>04-2252-0817</td>
+											</tr>
+											<tr>
+												<td>環境工程技師查核缺失資料</td>
+												<td rowspan="2">環保署管制考核及糾紛處理處</td>
+												<td rowspan="2">02-23117722</td>
+											</tr>
+											<tr>
+												<td>環境工程技師懲戒資料</td>
+											</tr>
+											<tr>
+												<td>空專責人員申請證書撤銷或廢止資料</td>
+												<td>環境保護人員訓練所</td>
+												<td>03-402-0789</td>
+											</tr>
+											<tr>
+												<td>環境檢驗測定機構執行空污業務查核處分資料</td>
+												<td>環境檢驗所</td>
+												<td>03-419-5818</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div>
+									<div class="MB MT">(二)環保局主管機關諮詢窗口</div>
+									<table class="Odd_bg_setting">
+										<tbody>
+											<tr>
+												<th>縣巿環保局</th>
+												<th>電話</th>
+											</tr>
+											<tr>
+												<td>臺北市政府環境保護局</td>
+												<td>(02)27287245</td>
+											</tr>
+											<tr>
+												<td>臺中市政府環境保護局</td>
+												<td>(04)22289111</td>
+											</tr>
+											<tr>
+												<td>基隆市環境保護局</td>
+												<td>(02)24651115</td>
+											</tr>
+											<tr>
+												<td>臺南市政府環境保護局</td>
+												<td>06-2686751</td>
+											</tr>
+											<tr>
+												<td>高雄市政府環境保護局</td>
+												<td>(07)7355184</td>
+											</tr>
+											<tr>
+												<td>新北市政府環境保護局</td>
+												<td>(02)29532111</td>
+											</tr>
+											<tr>
+												<td>宜蘭縣政府環境保護局</td>
+												<td>(03)9907755</td>
+											</tr>
+											<tr>
+												<td>桃園市政府環境保護局</td>
+												<td>(03)3386021</td>
+											</tr>
+											<tr>
+												<td>嘉義市政府環境保護局</td>
+												<td>(05)2251775</td>
+											</tr>
+											<tr>
+												<td>新竹縣政府環境保護局</td>
+												<td>(03)5519345</td>
+											</tr>
+											<tr>
+												<td>苗栗縣環境保護局</td>
+												<td>(037)558558</td>
+											</tr>
+											<tr>
+												<td>南投縣政府環境保護局</td>
+												<td>(049)2233753</td>
+											</tr>
+											<tr>
+												<td>彰化縣環境保護局</td>
+												<td>(04)7115655</td>
+											</tr>
+											<tr>
+												<td>新竹市環境保護局</td>
+												<td>(03)5368920</td>
+											</tr>
+											<tr>
+												<td>雲林縣環境保護局</td>
+												<td>(05)5340415</td>
+											</tr>
+											<tr>
+												<td>嘉義縣環境保護局</td>
+												<td>(05)3620800</td>
+											</tr>
+											<tr>
+												<td>屏東縣政府環境保護局</td>
+												<td>(08)7352078</td>
+											</tr>
+											<tr>
+												<td>花蓮縣環境保護局</td>
+												<td>(03)8237575</td>
+											</tr>
+											<tr>
+												<td>臺東縣環境保護局</td>
+												<td>(08)9221999</td>
+											</tr>
+											<tr>
+												<td>金門縣環境保護局</td>
+												<td>(082)336823</td>
+											</tr>
+											<tr>
+												<td>澎湖縣政府環境保護局</td>
+												<td>(06)9221778</td>
+											</tr>
+											<tr>
+												<td>連江縣環境保護局</td>
+												<td>(083)626517</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div>
+									<div class="MB MT BGN">(三)系統維護廠商</div>
+									<table>
+										<tbody>
+											<tr>
+												<th>資料來源系統</th>
+												<th>維護廠商資訊</th>
+											</tr>
+											<tr>
+												<td>固定污染源資訊公開平台</td>
+												<td rowspan="3">環科工程股份有限公司02-27753919</td>
+											</tr>
+											<tr>
+												<td>固定污染源管理資訊系統</td>
+											</tr>
+											<tr>
+												<td>空氣污染物削減量差額管理平台</td>
+											</tr>
+											<tr>
+												<td>專責人員設置動態系統</td>
+												<td rowspan="2">環資國際有限公司</td>
+											</tr>
+											<tr>
+												<td>環保稽查處分管制系統</td>
+											</tr>
+											<tr>
+												<td>固定污染源空污費暨排放量申報整合管理系統</td>
+												<td>康城工程顧問</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="heading5">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button"
+									data-toggle="collapse" data-target="#collapse5"
+									aria-expanded="false" aria-controls="collapse5">操作手冊</button>
+							</h5>
+						</div>
+						<div id="collapse5" class="collapse"
+							aria-labelledby="heading5" data-parent="#accordionExample">
+							<div class="card-body">
+								<ul>
+									<li><a href="" data-ng-click="downloadFile(1)">列管工廠資料公開操作手冊.pdf</a></li>
+									<li><a href="" data-ng-click="downloadFile(2)">排放量申報資料操作手冊.pdf</a></li>
+									<li><a href="" data-ng-click="downloadFile(3)">查核處分資訊操作手冊.pdf</a></li>
+									<li><a href="" data-ng-click="downloadFile(4)">民眾參與表示意見操作手冊.pdf</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="heading6">
+							<h5 class="mb-0">
+								<button class="btn btn-link" type="button"
+									data-toggle="collapse" data-target="#collapse6"
+									aria-expanded="false" aria-controls="collapse6"
+									data-ng-class="c2 ? '' : 'collapsed'" data-ng-click="c2 = !c2">常見問題</button>
+							</h5>
+						</div>
+						<div id="collapse6" class="collapse"
+							aria-labelledby="heading6" data-parent="#accordionExample"
+							data-ng-class="c2 ? 'in' : ''" data-ng-style="c2 ? {'height': 'auto'} : ''">
+							<div class="card-body">
+								<a href="" data-ng-click="downloadFile(5)">常見問題.pdf</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--about us contain end-->
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm1"></div>
+		</div>
+		<!--From area end-->
+	</div>
+</div>

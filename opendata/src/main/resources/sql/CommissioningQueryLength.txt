@@ -1,0 +1,6 @@
+SELECT 
+    COUNT(Sn)
+FROM 
+    View_Re_Commissioning
+WHERE 
+    1 = 1

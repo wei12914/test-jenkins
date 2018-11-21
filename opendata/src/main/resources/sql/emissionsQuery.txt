@@ -1,0 +1,19 @@
+SELECT
+    c.CityName AS cityName ,
+    d.FacNo    AS facNo,
+    d.FacName  AS facName,
+    d.Period   AS period,
+--    CONCAT( CAST( LEFT( d.Period, 4) AS INT) - 1911 ,SUBSTRING( d.Period,5,4))   AS period,
+    d.VOCs     AS vocs,
+    d.TSP      AS tsp,
+    d.SOx      AS sox,
+    d.NOx      AS nox,
+    d.Status   AS status
+FROM
+    Dec_Discharge d
+LEFT JOIN
+    com_city c
+ON
+    c.CityCode = substring(d.facNo, 1,1)
+WHERE
+    1=1

@@ -1,0 +1,121 @@
+<div class="container-full" data-ng-controller="commQueryController">
+	<div class="row m0 p0">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 P15">
+			<div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">首頁</li>
+		                <li class="breadcrumb-item">民眾參與表示意見</li>
+						<li class="breadcrumb-item active" aria-current="page">申請復工試車清單</li>
+					</ol>
+				</nav>
+				<div class="From_area">
+					<div class="row col-md-12 col-sm-12 m0">
+						<div class="col-md-12">
+							<div class="col-md-5 col-sm-12 MBO FS">
+								工廠： <input type="text" data-ng-model="factoryName" placeholder="(輸入管編或廠名)">
+							</div>
+							<div class="col-md-4 col-sm-10 col-xs-12">
+								縣市： <select data-ng-options="item.value as item.label for item in cityList"
+										data-ng-model="cityCode">
+									<option style="display: none;" value="">請選擇縣市</option>
+								</select>
+							</div>
+							<div class="col-md-3 col-sm-2 col-xs-12">
+								<button class=" Orang_btn btn btn-lg" data-ng-click="checkCondition()">查詢</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br class="Clear">
+		</div>
+	</div>
+
+	<div class="col-lg-2 col-md-2 col-sm-1"></div>
+	<br class="Clear">
+	<div class="row m0 p0">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 Prl">
+			<table class="table table-striped table-bordered table-rwd">
+				<tbody>
+					<tr class="tr-only-hide" data-ng-hide="dataList == undefined">
+						<th data-ng-click="sort('facNo')">
+							<i data-ng-class="label['facNo'].style"></i>管編
+						</th>
+						<th data-ng-click="sort('facName')">
+							<i data-ng-class="label['facName'].style"></i>廠名
+						</th>
+						<th data-ng-click="sort('cityCode')">
+							<i data-ng-class="label['cityCode'].style"></i>縣市
+						</th>
+						<th data-ng-click="sort('facAddr')">
+							<i data-ng-class="label['facAddr'].style"></i>廠址
+						</th>
+						<th data-ng-click="sort('publicDate')">
+							<i data-ng-class="label['publicDate'].style"></i>公開<br>日期
+						</th>
+						<th data-ng-click="sort('aplStatus')">
+							<i data-ng-class="label['aplStatus'].style"></i>申請<br>審查狀態
+						</th>
+						<th data-ng-click="sort('auditDate')">
+							<i data-ng-class="label['auditDate'].style"></i>審查<br>會議日期
+						</th>
+						<th style="width: 50px">提問<br>彙整</th>
+						<th style="width: 50px">會議<br>紀錄</th>
+					</tr>
+					<tr data-ng-repeat="item in dataList track by $index">
+						<td data-th="管編">
+							<a href="" data-ng-if="item.aplStatus != '9'" data-ng-click="viewItem(item.sn)">{{item.facNo}}</a>
+							<span data-ng-if="item.aplStatus == '9'">{{item.facNo | noneDataFilter}}</span>
+						</td>
+						<td data-th="廠名">{{item.facName | noneDataFilter}}</td>
+						<td data-th="縣市">{{item.cityName | noneDataFilter}}</td>
+						<td data-th="廠址">{{item.facAddr | noneDataFilter}}</td>
+						<td data-th="公開日期">{{item.publicDate | noneDataFilter}}</td>
+						<td data-th="狀態">{{item.aplName | noneDataFilter}}</td>
+						<td data-th="審查會議日期">{{item.auditDate | noneDataFilter}}</td>
+						<td data-th="提問彙整">
+							<button class="Gray_btn btn btn-sm" data-ng-if="item.isQuestion && item.aplStatus != '9'" 
+								data-ng-click="viewQuestion(item.sn)">查看</button>
+							<span data-ng-if="!item.isQuestion || item.aplStatus == '9'">　</span>
+						</td>
+						<td class="BBN" data-th="會議紀錄">
+							<button class="Gray_btn btn btn-sm" data-ng-if="item.isMeeting"
+								data-ng-click="downloadFile(item.sn)">下載</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div data-ng-hide="(dataList == undefined || dataList.length > 0 )" class="No_Con">
+				<span class="fas fa-info-circle fa-2x"></span>無資料
+			</div>
+			<nav aria-label="" class="text-center" data-ng-show="dataList.length > 0">
+				<ul class="pagination justify-content-center pagination-sm">
+					<li class="{{currentPage == 1?'page-item disabled':'page-item';}}">
+						<a class="page-link" href="" data-ng-click="prev()">上一頁</a>
+					</li>
+					<li class="{{currentPage == page?'page-item active':'page-item';}}"
+						data-ng-repeat="page in pageList track by $index"><a
+						class="page-link" href="" data-ng-click="pageClick(page)">{{page}}</a>
+					</li>
+					<li class="{{currentPage == pageMax?'page-item disabled':'page-item';}}">
+						<a class="page-link" href="" data-ng-click="next()">下一頁</a>
+					</li>
+				</ul>
+			</nav>
+			
+			<div class="Note">
+				<p>說明</p>
+				<ul>
+		            <li>點按指定管編可查看該廠之復工試車計畫書，並提供表達意見</li>
+					<li>點按指定管編最後的[查看]可查看指定廠目前意見彙整資料</li>
+					<li>點按指定管編最後的[下載]可查看指定廠申請復工審查會議紀錄</li>
+		          </ul>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-1"></div>
+	</div>
+
+</div>

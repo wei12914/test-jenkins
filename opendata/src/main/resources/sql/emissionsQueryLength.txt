@@ -1,0 +1,10 @@
+SELECT 
+    count(d.FacNo)
+FROM
+    Dec_Discharge d
+LEFT JOIN
+    com_city c
+ON
+    c.CityCode = substring(d.facNo, 1,1)
+WHERE
+    1=1

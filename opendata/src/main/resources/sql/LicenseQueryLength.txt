@@ -1,0 +1,10 @@
+SELECT 
+    count(a.FacNo)
+FROM 
+    com_factory a
+LEFT JOIN
+    com_city b 
+ON
+	a.CityCode = b.CityCode
+WHERE
+	1 = 1

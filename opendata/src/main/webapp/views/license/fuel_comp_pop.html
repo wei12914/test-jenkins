@@ -1,0 +1,54 @@
+<md-dialog>
+	<div class="pop_div_setting">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title h4" id="myLargeModalLabel">燃料成份清單</h5>
+					<button type="button" class="close" data-ng-click="close()" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="Pop_setting">
+					<div class="col-lg-12 col-md-12 col-sm-12 Tab_area">
+						<div class="tab-content">
+							<div id="Pop_c1" class="tab-pane fade active in">
+								<table class="table table-striped table-bordered table-rwd">
+									<tbody>
+										<tr class="tr-only-hide">
+											<th data-ng-click="sort('PerNo')"><i data-ng-class="label['PerNo'].style">使用許可證</th>
+											<th data-ng-click="sort('ClassCode')"><i data-ng-class="label['ClassCode'].style">類別</th>
+											<th data-ng-click="sort('ApprovalQty')"><i data-ng-class="label['ApprovalQty'].style">核可使用量</th>
+											<th data-ng-click="sort('UnitCode')"><i data-ng-class="label['UnitCode'].style">單位</th>
+											<th data-ng-click="sort('EffDate')"><i data-ng-class="label['EffDate'].style">生效日期</th>
+											<th data-ng-click="sort('AvlDate')"><i data-ng-class="label['AvlDate'].style">有效期限</th>
+											<th data-ng-click="sort('Name')"><i data-ng-class="label['Name'].style">核定成份</th>
+											<th data-ng-click="sort('CompMax')"><i data-ng-class="label['CompMax'].style">下限</th>
+											<th data-ng-click="sort('CompMin')"><i data-ng-class="label['CompMin'].style">上限</th>
+											<th data-ng-click="sort('Remark')"><i data-ng-class="label['Remark'].style">備註</th>
+										</tr>
+										<tr data-ng-repeat="item in fuelCompList">
+											<td data-th="使用許可證">{{item.perNo | noneDataFilter}}</td>
+											<td data-th="類別">{{item.className | noneDataFilter}}</td>
+											<td data-th="核可使用量">{{item.approvalQty | noneDataFilter}}</td>
+											<td data-th="單位">{{item.unitName | noneDataFilter}}</td>
+											<td data-th="生效日期">{{item.effDate | noneDataFilter}}</td>
+											<td data-th="有效期限">{{item.avlDate | noneDataFilter}}</td>
+											<td data-th="核定成份">{{item.compCode | noneDataFilter}}</td>
+											<td data-th="下限">{{item.compMax | noneDataFilter}}</td>
+											<td data-th="上限">{{item.compMin | noneDataFilter}}</td>
+											<td class="BBN" data-th="備註">{{item.remark | noneDataFilter}}</td>
+										</tr>
+									</tbody>
+								</table>
+								<div data-ng-hide="(fuelCompList == undefined || fuelCompList.length > 0 )" class="No_Con">
+									<span class="fas fa-info-circle fa-2x"></span>無資料
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</md-dialog>

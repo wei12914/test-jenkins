@@ -1,0 +1,12 @@
+SELECT
+    PipeNorthTm2 as northTm,
+    PipeEastTm2 as eastTm,
+    PipeNo as pipeNo
+FROM
+    per_pipelimit
+WHERE
+    FacNo= :facNo AND PipeState != 2
+GROUP BY
+    PipeNorthTm2,
+    PipeEastTm2,
+    PipeNo

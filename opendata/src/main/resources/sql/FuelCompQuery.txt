@@ -1,0 +1,29 @@
+SELECT
+    a.PerNo       AS perNo,
+    c.ClassName   AS ClassName,
+    a.EffDate     AS effDate,
+    a.AvlDate     AS avlDate,
+    a.ApprovalQty AS approvalQty,
+    d.Name        AS UnitName,
+    b.Name        AS compCode,
+    a.CompMax     AS compMax,
+    a.CompMin     AS compMin,
+    a.Remark      AS remark
+FROM
+    Per_FuelComp a
+LEFT JOIN
+    Com_Common b
+ON
+    a.CompCode = b.Code
+AND b.Type ='Composition'
+LEFT JOIN
+    Com_Fuel c
+ON
+    a.ClassCode = c.ClassCode
+LEFT JOIN
+    Com_Common d
+ON
+    a.UnitCode = d.Code
+AND d.Type = 'CUnit'
+WHERE 1 = 1 
+    

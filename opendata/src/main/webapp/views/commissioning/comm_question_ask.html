@@ -1,0 +1,70 @@
+<div class="container-full" data-ng-controller="commQuestionAskController">
+	<div class="row m0 p0">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 P15">
+			<div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">首頁</li>
+		                <li class="breadcrumb-item">民眾參與表示意見</li>
+						<li class="breadcrumb-item active" aria-current="page">復工試車計畫表示意見</li>
+					</ol>
+				</nav>
+
+				<div class="col-lg-12 col-md-12 col-sm-12 Tab_area  Clear">
+					<div class="col-lg-12 col-md-12 Basic_infor_area Dpn MB">
+						<ul>
+							<li>管編:{{facNo}}</li>
+							<li>廠名：{{facName}}</li>
+							<li>公開日期(完成申請且公開)：{{publicDate}}</li>
+						</ul>
+					</div>
+					<form name="form">
+						<div class="col-lg-12 col-md-12 col-sm-12 MB">
+							<div class="Form_Date_area">問題或建議</div>
+							<textarea cols="100" rows="8" placeholder="(請填您的問題及建議)" name="question" maxlength="500" data-ng-model="data.question" required></textarea>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 MB">
+							<div class="Form_Date_area">提問人基本資訊</div>
+							<div class="Basic_contact_infor">
+								<ul>
+									<li>
+										<span>真實姓名：</span>
+										<input type="text" style="height: 25px" name="name" maxlength="10" data-ng-model="data.name" required>
+									</li>
+									<li>
+										<span>地址：</span>
+										<select style="height: 25px; margin-bottom: auto" name="cityCode" required
+											data-ng-options="item.value as item.label for item in cityList"
+											data-ng-model="data.cityCode" data-ng-change="changeCity(item.value)">
+											<option style="display:none" value="">請選擇縣市</option>
+										</select>
+										<select style="height: 25px; margin-bottom: auto" name="townCode" required
+											data-ng-options="item.value as item.label for item in townList"
+											data-ng-model="data.townCode">
+											<option style="display:none" value="">請選擇鄉鎮</option>
+										</select>
+										<input type="text" style="height: 25px; width: 330px" name="detailAddr" maxlength="100" data-ng-model="data.detailAddr" required>
+									</li>
+									<li>
+										<span>電子信箱：</span>
+										<input type="text" style="height: 25px; width: 330px" name="email" maxlength="70" data-ng-model="data.email">
+									</li>
+									<li>
+										<span>聯絡電話：</span>
+										<input type="text" style="height: 25px; width: 330px" name="phoneNumber" maxlength="40" data-ng-model="data.phoneNumber" required>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+					<p class="Note">依行政程序法 173條第一項：無具體之內容或未具真實姓名或住址者得不予處理</p>
+					<div class="text-center">
+						<button class="Orang_btn btn btn-md" data-ng-click="save(form)">存檔</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+	</div>
+</div>

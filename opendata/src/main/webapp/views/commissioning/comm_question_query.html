@@ -1,0 +1,73 @@
+<div class="container-full"
+	data-ng-controller="commQuestionQueryController">
+	<div class="row m0 p0">
+		<div class="col-lg-2 col-md-2 col-sm1"></div>
+		<div class="col-lg-8 col-md-8 col-sm10 P15">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">首頁</li>
+		                <li class="breadcrumb-item">民眾參與表示意見</li>
+					<li class="breadcrumb-item active" aria-current="page">建議及問題彙整</li>
+				</ol>
+			</nav>
+
+			<div class="col-lg-12 col-md-12 col-sm-12 Tab_area  Clear">
+				<div class="col-lg-12 col-md-12 Basic_infor_area">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="col-lg-12 col-md-12 col-sm-12">管編:{{data.facNo}}</div>
+						<div class="col-lg-12 col-md-12 col-sm-12">廠名:{{data.facName}}</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3">
+						<div class="col-lg-12 col-md-12 col-sm-12">公開日期:{{data.publicDate}}</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3">
+						<button class="Orang_btn btn btn-lg" data-ng-click="exportCsv()" data-ng-if="dataList.length > 0">下載</button>
+					</div>
+				</div>
+				<div>
+					<table class="table table-striped table-bordered table-rwd">
+						<tbody>
+							<tr class="tr-only-hide">
+<!-- 								<th data-ng-click="sort('seqNo')"><i -->
+<!-- 									data-ng-class="label['seqNo'].style"></i>序號</th> -->
+<!-- 								<th data-ng-click="sort('publishDate')"><i -->
+<!-- 									data-ng-class="label['publishDate'].style"></i>發表日期</th> -->
+								<th>序號</th>
+								<th>發表日期</th>
+								<th>問題或建議</th>
+							</tr>
+							<tr data-ng-repeat="item in dataList track by $index">
+								<td data-th="序號">{{item.seqNo | noneDataFilter}}</td>
+								<td data-th="發表日期">{{item.publishDate | noneDataFilter}}</td>
+								<td class="BBN" data-th="問題或建議">
+									<pre style="white-space:pre-wrap; word-wrap:break-word;">{{item.question | noneDataFilter}}</pre>
+								</td>
+<!-- 								<td data-th="問題或建議">{{item.question}}</td> -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div data-ng-hide="(dataList == undefined || dataList.length > 0 )" class="No_Con">
+					<span class="fas fa-info-circle fa-2x"></span>無資料
+				</div>
+
+				<nav aria-label="" class="text-center" data-ng-show="dataList.length > 0">
+					<ul class="pagination justify-content-center pagination-sm">
+						<li class="{{currentPage == 1?'page-item disabled':'page-item';}}">
+							<a class="page-link" href="" data-ng-click="prev()">上一頁</a>
+						</li>
+						<li
+							class="{{currentPage == page?'page-item active':'page-item';}}"
+							data-ng-repeat="page in pageList track by $index"><a
+							class="page-link" href="" data-ng-click="pageClick(page)">{{page}}</a>
+						</li>
+						<li class="{{currentPage == pageMax?'page-item disabled':'page-item';}}">
+							<a class="page-link" href="" data-ng-click="next()">下一頁</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>

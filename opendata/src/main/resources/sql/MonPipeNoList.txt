@@ -1,0 +1,10 @@
+SELECT
+    PipeNo
+FROM
+    Mon_ConMonitor
+WHERE
+    FacNo = :facNo
+GROUP BY
+    PipeNo
+ORDER BY
+    PipeNo
